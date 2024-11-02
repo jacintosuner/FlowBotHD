@@ -1,0 +1,14 @@
+name: trajectory
+data_dir: ${oc.env:HOME}/datasets/partnet-mobility
+
+dataset: umpnet
+model: trajectory
+# batch_size: 64
+# batch_size: 32
+lr: 1e-3
+mask_input_channel: True
+randomize_camera: True
+randomize_size: False
+augmentation: True
+seed: 42
+n_points: 1200
