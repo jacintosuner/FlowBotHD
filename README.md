@@ -1,10 +1,11 @@
-# FlowBotHD
+# FlowBotHD: History-Aware Diffuser Handling Ambiguities in Articulated Objects Manipulation
 
 [FlowBotHD](https://flowbothd.github.io/) is a history-aware diffusion handling ambiguities (multi-modality and occlusion) in articulated objects.
 
 ![Alt text](assets/imgs/teaser.jpg)
 
 Paper: [https://arxiv.org/abs/2410.07078](https://arxiv.org/abs/2410.07078)
+
 Project Website: [https://flowbothd.github.io/](https://flowbothd.github.io/)
 
 
