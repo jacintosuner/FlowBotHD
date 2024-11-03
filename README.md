@@ -4,6 +4,9 @@
 
 ![Alt text](assets/imgs/teaser.jpg)
 
+Paper: [https://arxiv.org/abs/2410.07078](https://arxiv.org/abs/2410.07078)
+Project Website: [https://flowbothd.github.io/](https://flowbothd.github.io/)
+
 
 ## Installation
 
