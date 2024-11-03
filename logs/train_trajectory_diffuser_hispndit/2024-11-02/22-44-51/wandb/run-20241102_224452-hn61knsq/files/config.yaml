@@ -1,0 +1,263 @@
+wandb_version: 1
+
+dataset:
+  desc: null
+  value:
+    name: trajectory
+    data_dir: /home/yishu/datasets/partnet-mobility
+    dataset_type: doors-only
+    special_req: half-half-01
+    lr: 0.001
+    mask_input_channel: true
+    randomize_camera: true
+    randomize_size: false
+    augmentation: false
+    seed: 42
+    n_points: 1200
+model:
+  desc: null
+  value:
+    name: diffuser_hispndit
+    history_model: encoder
+    time_proj_dim: 64
+    time_embed_dim: 64
+    freq_shift: 0
+    flip_sin_to_cos: true
+    num_train_timesteps: 100
+    num_inference_timesteps: 100
+    history_len: 1
+    history_dim: 128
+    batch_norm: true
+training:
+  desc: null
+  value:
+    name: trajectory_diffuser_hispndit
+    lr: 0.0001
+    lr_warmup_steps: 100
+    batch_size: 128
+    epochs: 1000
+    train_sample_number: 43
+    check_val_every_n_epoch: 5
+    trajectory_len: 1
+    mode: delta
+    wta: true
+    wta_trial_times: 20
+log_dir:
+  desc: null
+  value: /home/yishu/FlowBotHD/logs
+output_dir:
+  desc: null
+  value: /home/yishu/FlowBotHD/logs/train_trajectory_diffuser_hispndit/2024-11-02/22-44-51
+job_type:
+  desc: null
+  value: train_trajectory_diffuser_hispndit
+lightning:
+  desc: null
+  value:
+    checkpoint_dir: /home/yishu/FlowBotHD/logs/train_trajectory_diffuser_hispndit/2024-11-02/22-44-51/checkpoints
+wandb:
+  desc: null
+  value:
+    entity: leisure-thu-cv
+    project: flowbothd
+    group: null
+    save_dir: /home/yishu/FlowBotHD/logs/train_trajectory_diffuser_hispndit/2024-11-02/22-44-51
+    artifact_dir: /home/yishu/FlowBotHD/wandb_artifacts
+mode:
+  desc: null
+  value: train
+seed:
+  desc: null
+  value: 42
+resources:
+  desc: null
+  value:
+    num_workers: 30
+    n_proc_per_worker: 2
+    gpus:
+    - 0
+_wandb:
+  desc: null
+  value:
+    code_path: code/scripts/train.py
+    python_version: 3.9.20
+    cli_version: 0.15.4
+    framework: huggingface
+    huggingface_version: 4.31.0
+    is_jupyter_run: false
+    is_kaggle_kernel: false
+    start_time: 1730601892.180078
+    t:
+      1:
+      - 1
+      - 9
+      - 11
+      - 12
+      - 41
+      - 45
+      - 49
+      - 50
+      - 55
+      - 63
+      - 71
+      - 77
+      - 83
+      2:
+      - 1
+      - 9
+      - 11
+      - 12
+      - 41
+      - 45
+      - 49
+      - 50
+      - 55
+      - 63
+      - 71
+      - 77
+      - 83
+      3:
+      - 7
+      - 16
+      - 23
+      4: 3.9.20
+      5: 0.15.4
+      6: 4.31.0
+      8:
+      - 5
+    m:
+    - 1: trainer/global_step
+      6:
+      - 3
+    - 1: train/loss
+      5: 1
+      6:
+      - 1
+    - 1: epoch
+      5: 1
+      6:
+      - 1
+    - 1: val/diffuser_plot._type
+      5: 1
+      6:
+      - 1
+    - 1: val/diffuser_plot.sha256
+      5: 1
+      6:
+      - 1
+    - 1: val/diffuser_plot.size
+      5: 1
+      6:
+      - 1
+    - 1: val/diffuser_plot.path
+      5: 1
+      6:
+      - 1
+    - 1: val_wta/cosine_distribution_plot._type
+      5: 1
+      6:
+      - 1
+    - 1: val_wta/cosine_distribution_plot.sha256
+      5: 1
+      6:
+      - 1
+    - 1: val_wta/cosine_distribution_plot.size
+      5: 1
+      6:
+      - 1
+    - 1: val_wta/cosine_distribution_plot.path
+      5: 1
+      6:
+      - 1
+    - 1: global_step
+      5: 1
+      6:
+      - 1
+    - 1: unseen/flow_loss
+      5: 1
+      6:
+      - 1
+    - 1: unseen/rmse
+      5: 1
+      6:
+      - 1
+    - 1: unseen/cosine_similarity
+      5: 1
+      6:
+      - 1
+    - 1: unseen/mag_error
+      5: 1
+      6:
+      - 1
+    - 1: unseen_wta/flow_loss
+      5: 1
+      6:
+      - 1
+    - 1: unseen_wta/rmse
+      5: 1
+      6:
+      - 1
+    - 1: unseen_wta/cosine_similarity
+      5: 1
+      6:
+      - 1
+    - 1: unseen_wta/mag_error
+      5: 1
+      6:
+      - 1
+    - 1: unseen_wta/multimodal
+      5: 1
+      6:
+      - 1
+    - 1: unseen_wta/pos@0\.7
+      5: 1
+      6:
+      - 1
+    - 1: unseen_wta/neg@0\.7
+      5: 1
+      6:
+      - 1
+    - 1: val/flow_loss
+      5: 1
+      6:
+      - 1
+    - 1: val/rmse
+      5: 1
+      6:
+      - 1
+    - 1: val/cosine_similarity
+      5: 1
+      6:
+      - 1
+    - 1: val/mag_error
+      5: 1
+      6:
+      - 1
+    - 1: val_wta/flow_loss
+      5: 1
+      6:
+      - 1
+    - 1: val_wta/rmse
+      5: 1
+      6:
+      - 1
+    - 1: val_wta/cosine_similarity
+      5: 1
+      6:
+      - 1
+    - 1: val_wta/mag_error
+      5: 1
+      6:
+      - 1
+    - 1: val_wta/multimodal
+      5: 1
+      6:
+      - 1
+    - 1: val_wta/pos@0\.7
+      5: 1
+      6:
+      - 1
+    - 1: val_wta/neg@0\.7
+      5: 1
+      6:
+      - 1

@@ -54,73 +54,6 @@ def load_obj_and_link(id_to_cat):
     return object_link_json
 
 
-# toy_dataset = {
-#     "id": "door-full-new",
-#     "train-train": [
-#         "8877",
-#         "8893",
-#         "8897",
-#         "8903",
-#         "8919",
-#         "8930",
-#         "8961",
-#         "8997",
-#         "9016",
-#         "9032",
-#         "9035",
-#         "9041",
-#         "9065",
-#         "9070",
-#         "9107",
-#         "9117",
-#         "9127",
-#         "9128",
-#         "9148",
-#         "9164",
-#         "9168",
-#         "9277",
-#         "9280",
-#         "9281",
-#         "9288",
-#         "9386",
-#         "9388",
-#         "9410",
-#     ],
-#     "train-test": ["8867", "8983", "8994", "9003", "9263", "9393"],
-#     "test": ["8867", "8983", "8994", "9003", "9263", "9393"],
-# }
-# toy_dataset = {  # For half-half fullset training
-#     "id": "door-full-fullset",
-#     "train-train": [
-#         "9281",
-#         "9107",
-#         "8997",
-#         "9280",
-#         "9070",
-#         "8919",
-#         "9168",
-#         "8983",
-#         "9016",
-#         "9117",
-#         "9041",
-#         "9164",
-#         "8936",
-#         "8897",
-#         "9386",
-#         "9288",
-#         "8903",
-#         "9128",
-#         "8930",
-#         "8961",
-#         "9003",
-#     ],
-#     "train-test": ["9065", "8867", "9410", "9388", "8893", "8877"],
-#     "test": ["9065", "8867", "9410", "9388", "8893", "8877"],
-# }
-toy_dataset = None
-id_to_cat = load_obj_id_to_category(toy_dataset)
-object_to_link = load_obj_and_link(id_to_cat)
-
 object_ids = [  # Door
     "8877",
     "8893",
@@ -180,12 +113,51 @@ def main(cfg):
     # Should be the same one as in training, but we're gonna use val+test
     # dataloaders.
     ######################################################################
-    # datamodule = FlowBotDataModule(
-    #     root=cfg.dataset.data_dir,
-    #     batch_size=cfg.inference.batch_size,
-    #     num_workers=cfg.resources.num_workers,
-    #     n_proc=cfg.resources.n_proc_per_worker,  # Add n_proc
-    # )
+    
+    if cfg.dataset.dataset_type == "full-dataset":
+        # Full dataset
+        toy_dataset = None
+    else:
+        # Door dataset
+        toy_dataset = {
+            "id": "door-full-new-noslide",
+            "train-train": [
+                "8877",
+                "8893",
+                "8897",
+                "8903",
+                "8919",
+                "8930",
+                "8961",
+                "8997",
+                "9016",
+                # "9032",   # has slide
+                "9035",
+                "9041",
+                "9065",
+                "9070",
+                "9107",
+                "9117",
+                "9127",
+                "9128",
+                "9148",
+                "9164",
+                "9168",
+                "9277",
+                "9280",
+                "9281",
+                "9288",
+                "9386",
+                "9388",
+                "9410",
+            ],
+            "train-test": ["8867", "8983", "8994", "9003", "9263", "9393"],
+            "test": ["8867", "8983", "8994", "9003", "9263", "9393"],
+        }
+
+    id_to_cat = load_obj_id_to_category(toy_dataset)
+    object_to_link = load_obj_and_link(id_to_cat)
+
 
     ######################################################################
     # Set up logging in WandB.
@@ -283,7 +255,7 @@ def main(cfg):
         available_links = object_to_link[obj_id]
         if len(available_links) == 0:
             continue
-        if not os.path.exists(f"/home/yishu/datasets/partnet-mobility/raw/{obj_id}"):
+        if not os.path.exists(f"{cfg.dataset.data_dir}/raw/{obj_id}"):
             continue
         obj_ids.append(obj_id)
     obj_ids = obj_ids * repeat_time

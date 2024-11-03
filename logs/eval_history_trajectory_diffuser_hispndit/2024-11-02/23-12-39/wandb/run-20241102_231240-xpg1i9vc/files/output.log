@@ -1,0 +1,8 @@
+Error executing job with overrides: []
+Traceback (most recent call last):
+  File "/home/yishu/FlowBotHD/scripts/eval_history_diffuser_wta.py", line 244, in main
+    model = inference_module_class[cfg.model.name](
+  File "/home/yishu/miniconda3/envs/flowbothd/lib/python3.9/site-packages/flowbothd/models/flow_diffuser_hispndit.py", line 406, in __init__
+    network = networks["DiT"]
+TypeError: 'PN2DiT' object is not subscriptable
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.

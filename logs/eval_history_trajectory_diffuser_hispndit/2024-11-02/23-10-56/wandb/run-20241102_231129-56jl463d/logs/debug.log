@@ -1,0 +1,28 @@
+2024-11-02 23:11:29,104 INFO    MainThread:438562 [wandb_setup.py:_flush():76] Current SDK version is 0.15.4
+2024-11-02 23:11:29,104 INFO    MainThread:438562 [wandb_setup.py:_flush():76] Configure stats pid to 438562
+2024-11-02 23:11:29,104 INFO    MainThread:438562 [wandb_setup.py:_flush():76] Loading settings from /home/yishu/.config/wandb/settings
+2024-11-02 23:11:29,104 INFO    MainThread:438562 [wandb_setup.py:_flush():76] Loading settings from /home/yishu/FlowBotHD/logs/eval_history_trajectory_diffuser_hispndit/2024-11-02/23-10-56/wandb/settings
+2024-11-02 23:11:29,104 INFO    MainThread:438562 [wandb_setup.py:_flush():76] Loading settings from environment variables: {}
+2024-11-02 23:11:29,104 INFO    MainThread:438562 [wandb_setup.py:_flush():76] Applying setup settings: {'_disable_service': False}
+2024-11-02 23:11:29,104 INFO    MainThread:438562 [wandb_setup.py:_flush():76] Inferring run settings from compute environment: {'program_relpath': 'scripts/eval_history_diffuser_wta.py', 'program': '/home/yishu/FlowBotHD/scripts/eval_history_diffuser_wta.py'}
+2024-11-02 23:11:29,104 INFO    MainThread:438562 [wandb_init.py:_log_setup():507] Logging user logs to /home/yishu/FlowBotHD/logs/eval_history_trajectory_diffuser_hispndit/2024-11-02/23-10-56/wandb/run-20241102_231129-56jl463d/logs/debug.log
+2024-11-02 23:11:29,104 INFO    MainThread:438562 [wandb_init.py:_log_setup():508] Logging internal logs to /home/yishu/FlowBotHD/logs/eval_history_trajectory_diffuser_hispndit/2024-11-02/23-10-56/wandb/run-20241102_231129-56jl463d/logs/debug-internal.log
+2024-11-02 23:11:29,104 INFO    MainThread:438562 [wandb_init.py:init():547] calling init triggers
+2024-11-02 23:11:29,104 INFO    MainThread:438562 [wandb_init.py:init():554] wandb.init called with sweep_config: {}
+config: {'dataset': {'name': 'trajectory', 'data_dir': '/home/yishu/datasets/partnet-mobility', 'dataset_type': 'doors-only', 'special_req': 'half-half-01', 'lr': 0.001, 'mask_input_channel': True, 'randomize_camera': True, 'randomize_size': False, 'augmentation': False, 'seed': 42, 'n_points': 1200}, 'model': {'name': 'diffuser_hispndit', 'history_model': 'encoder', 'time_proj_dim': 64, 'time_embed_dim': 64, 'freq_shift': 0, 'flip_sin_to_cos': True, 'num_train_timesteps': 100, 'num_inference_timesteps': 100, 'history_len': 1, 'history_dim': 128, 'batch_norm': True}, 'inference': {'name': 'trajectory_diffuser_hispndit', 'batch_size': 64, 'trajectory_len': 1}, 'log_dir': '/home/yishu/FlowBotHD/logs', 'output_dir': '/home/yishu/FlowBotHD/logs/eval_history_trajectory_diffuser_hispndit/2024-11-02/23-10-56', 'job_type': 'eval_history_trajectory_diffuser_hispndit', 'lightning': {'checkpoint_dir': '/home/yishu/FlowBotHD/logs/eval_history_trajectory_diffuser_hispndit/2024-11-02/23-10-56/checkpoints'}, 'wandb': {'entity': 'leisure-thu-cv', 'project': 'flowbothd', 'group': 'flowbothd', 'save_dir': '/home/yishu/FlowBotHD/logs/eval_history_trajectory_diffuser_hispndit/2024-11-02/23-10-56', 'artifact_dir': '/home/yishu/FlowBotHD/wandb_artifacts'}, 'mode': 'eval_history', 'seed': 42, 'checkpoint': {'run_id': 'hn61knsq', 'reference': 'leisure-thu-cv/flowbothd/model-hn61knsq:best'}, 'resources': {'num_workers': 30, 'n_proc_per_worker': 2, 'gpus': [0]}, 'metric_output_dir': './logs'}
+2024-11-02 23:11:29,104 INFO    MainThread:438562 [wandb_init.py:init():596] starting backend
+2024-11-02 23:11:29,104 INFO    MainThread:438562 [wandb_init.py:init():600] setting up manager
+2024-11-02 23:11:29,106 INFO    MainThread:438562 [backend.py:_multiprocessing_setup():106] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2024-11-02 23:11:29,108 INFO    MainThread:438562 [wandb_init.py:init():606] backend started and connected
+2024-11-02 23:11:29,112 INFO    MainThread:438562 [wandb_init.py:init():703] updated telemetry
+2024-11-02 23:11:29,142 INFO    MainThread:438562 [wandb_init.py:init():736] communicating run to backend with 60.0 second timeout
+2024-11-02 23:11:29,392 INFO    MainThread:438562 [wandb_run.py:_on_init():2176] communicating current version
+2024-11-02 23:11:29,485 INFO    MainThread:438562 [wandb_run.py:_on_init():2185] got version response upgrade_message: "wandb version 0.18.5 is available!  To upgrade, please run:\n $ pip install wandb --upgrade"
+
+2024-11-02 23:11:29,485 INFO    MainThread:438562 [wandb_init.py:init():787] starting run threads in backend
+2024-11-02 23:11:32,594 INFO    MainThread:438562 [wandb_run.py:_console_start():2155] atexit reg
+2024-11-02 23:11:32,595 INFO    MainThread:438562 [wandb_run.py:_redirect():2010] redirect: SettingsConsole.WRAP_RAW
+2024-11-02 23:11:32,595 INFO    MainThread:438562 [wandb_run.py:_redirect():2075] Wrapping output streams.
+2024-11-02 23:11:32,595 INFO    MainThread:438562 [wandb_run.py:_redirect():2100] Redirects installed.
+2024-11-02 23:11:32,595 INFO    MainThread:438562 [wandb_init.py:init():828] run started, returning control to user process
+2024-11-02 23:11:38,312 WARNING MsgRouterThr:438562 [router.py:message_loop():77] message_loop has been closed

@@ -1,0 +1,130 @@
+
+
+1it [00:03,  3.81s/it]
+1 tensor(0.6050, device='cuda:0') tensor(0.2122, device='cuda:0') tensor(0.2381, device='cuda:0') tensor(0.2282, device='cuda:0')
+
+2it [00:07,  3.71s/it]
+
+3it [00:11,  3.69s/it]
+
+4it [00:14,  3.67s/it]
+
+5it [00:18,  3.61s/it]
+
+6it [00:21,  3.59s/it]
+
+7it [00:25,  3.59s/it]
+
+8it [00:28,  3.56s/it]
+
+9it [00:32,  3.57s/it]
+
+
+11it [00:39,  3.63s/it]
+0 tensor(0.6976, device='cuda:0') tensor(0.4739, device='cuda:0') tensor(0.2887, device='cuda:0') tensor(0.5099, device='cuda:0')
+
+12it [00:43,  3.62s/it]
+
+13it [00:47,  3.62s/it]
+
+14it [00:50,  3.62s/it]
+
+
+16it [00:58,  3.64s/it]
+0 tensor(0.7348, device='cuda:0') tensor(0.2559, device='cuda:0') tensor(0.2518, device='cuda:0') tensor(0.5290, device='cuda:0')
+
+17it [01:01,  3.65s/it]
+
+18it [01:05,  3.66s/it]
+
+19it [01:09,  3.67s/it]
+
+20it [01:12,  3.65s/it]
+
+
+22it [01:19,  3.65s/it]
+0 tensor(0.3191, device='cuda:0') tensor(0.9011, device='cuda:0') tensor(0.2400, device='cuda:0') tensor(0.1443, device='cuda:0')
+
+23it [01:23,  3.66s/it]
+
+24it [01:27,  3.67s/it]
+
+25it [01:30,  3.64s/it]
+
+27it [01:38,  3.63s/it]
+/home/yishu/miniconda3/envs/flowbothd/lib/python3.9/site-packages/lightning/pytorch/core/module.py:407: UserWarning: You are trying to `self.log()` but the `self.trainer` reference is not registered on the model yet. This is most likely because the model hasn't been passed to the `Trainer`
+  rank_zero_warn(
+0it [00:00, ?it/s]
+0 tensor(0.6839, device='cuda:0') tensor(-0.2137, device='cuda:0') tensor(0.3156, device='cuda:0') tensor(0.2830, device='cuda:0')
+train_closed metric:
+{'flow_loss': 0.24290979984733793, 'rmse': 0.43023783851552894, 'cosine_similarity': 0.7223520839103946, 'mag_error': 0.2666032038353108, 'multimodal': 0.4074074074074074, 'pos@0.7': 0.3059259181221326, 'neg@0.7': 0.23629628963492535}
+
+1it [00:03,  3.59s/it]
+
+2it [00:07,  3.57s/it]
+
+3it [00:10,  3.63s/it]
+
+
+5it [00:17,  3.57s/it]
+5it [00:20,  4.02s/it]
+Traceback (most recent call last):
+  File "/home/yishu/FlowBotHD/scripts/eval_history_diffuser_wta.py", line 356, in <module>
+    main()
+  File "/home/yishu/miniconda3/envs/flowbothd/lib/python3.9/site-packages/torch/utils/_contextlib.py", line 115, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/yishu/miniconda3/envs/flowbothd/lib/python3.9/site-packages/hydra/main.py", line 94, in decorated_main
+    _run_hydra(
+  File "/home/yishu/miniconda3/envs/flowbothd/lib/python3.9/site-packages/hydra/_internal/utils.py", line 394, in _run_hydra
+    _run_app(
+  File "/home/yishu/miniconda3/envs/flowbothd/lib/python3.9/site-packages/hydra/_internal/utils.py", line 457, in _run_app
+    run_and_report(
+  File "/home/yishu/miniconda3/envs/flowbothd/lib/python3.9/site-packages/hydra/_internal/utils.py", line 220, in run_and_report
+    return func()
+  File "/home/yishu/miniconda3/envs/flowbothd/lib/python3.9/site-packages/hydra/_internal/utils.py", line 458, in <lambda>
+    lambda: hydra.run(
+  File "/home/yishu/miniconda3/envs/flowbothd/lib/python3.9/site-packages/hydra/_internal/hydra.py", line 119, in run
+    ret = run_job(
+  File "/home/yishu/miniconda3/envs/flowbothd/lib/python3.9/site-packages/hydra/core/utils.py", line 186, in run_job
+    ret.return_value = task_function(task_cfg)
+  File "/home/yishu/FlowBotHD/scripts/eval_history_diffuser_wta.py", line 299, in main
+    metrics, directions = model.predict_wta(
+  File "/home/yishu/miniconda3/envs/flowbothd/lib/python3.9/site-packages/torch/utils/_contextlib.py", line 115, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/yishu/miniconda3/envs/flowbothd/lib/python3.9/site-packages/flowbothd/models/flow_diffuser_hispndit.py", line 537, in predict_wta
+    samples, results = self.diffusion.p_sample_loop(
+  File "/home/yishu/miniconda3/envs/flowbothd/lib/python3.9/site-packages/flowbothd/models/dit_utils/gaussian_diffusion.py", line 471, in p_sample_loop
+    for sample in self.p_sample_loop_progressive(
+  File "/home/yishu/miniconda3/envs/flowbothd/lib/python3.9/site-packages/flowbothd/models/dit_utils/gaussian_diffusion.py", line 524, in p_sample_loop_progressive
+    out = self.p_sample(
+  File "/home/yishu/miniconda3/envs/flowbothd/lib/python3.9/site-packages/flowbothd/models/dit_utils/gaussian_diffusion.py", line 420, in p_sample
+    out = self.p_mean_variance(
+  File "/home/yishu/miniconda3/envs/flowbothd/lib/python3.9/site-packages/flowbothd/models/dit_utils/respace.py", line 92, in p_mean_variance
+    return super().p_mean_variance(self._wrap_model(model), *args, **kwargs)
+  File "/home/yishu/miniconda3/envs/flowbothd/lib/python3.9/site-packages/flowbothd/models/dit_utils/gaussian_diffusion.py", line 286, in p_mean_variance
+    model_output = model(x, t, **model_kwargs)
+  File "/home/yishu/miniconda3/envs/flowbothd/lib/python3.9/site-packages/flowbothd/models/dit_utils/respace.py", line 127, in __call__
+    return self.model(x, new_ts, **kwargs)
+  File "/home/yishu/miniconda3/envs/flowbothd/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/yishu/miniconda3/envs/flowbothd/lib/python3.9/site-packages/flowbothd/models/modules/dit_models.py", line 616, in forward
+    encoded_pcd = self.x_embedder(context.cuda(), latents=context.history_embed)
+  File "/home/yishu/miniconda3/envs/flowbothd/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/yishu/miniconda3/envs/flowbothd/lib/python3.9/site-packages/flowbothd/models/modules/pn2.py", line 360, in forward
+    sa1_out = self.sa1(*sa0_out)
+  File "/home/yishu/miniconda3/envs/flowbothd/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/yishu/miniconda3/envs/flowbothd/lib/python3.9/site-packages/flowbothd/models/modules/pn2.py", line 77, in forward
+    x = self.conv(x, (pos, selected_pos), edge_index)
+  File "/home/yishu/miniconda3/envs/flowbothd/lib/python3.9/site-packages/torch/nn/modules/module.py", line 1501, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/home/yishu/miniconda3/envs/flowbothd/lib/python3.9/site-packages/torch_geometric/nn/conv/point_conv.py", line 93, in forward
+    out = self.propagate(edge_index, x=x, pos=pos, size=None)
+  File "/home/yishu/miniconda3/envs/flowbothd/lib/python3.9/site-packages/torch_geometric/nn/conv/message_passing.py", line 454, in propagate
+    out = self.aggregate(out, **aggr_kwargs)
+  File "/home/yishu/miniconda3/envs/flowbothd/lib/python3.9/site-packages/torch_geometric/nn/conv/message_passing.py", line 578, in aggregate
+    return self.aggr_module(inputs, index, ptr=ptr, dim_size=dim_size,
+  File "/home/yishu/miniconda3/envs/flowbothd/lib/python3.9/site-packages/torch_geometric/nn/aggr/base.py", line 126, in __call__
+    if index.numel() > 0 and dim_size <= int(index.max()):
+KeyboardInterrupt

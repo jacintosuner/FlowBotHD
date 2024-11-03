@@ -1,0 +1,33 @@
+Error executing job with overrides: []
+Traceback (most recent call last):
+  File "/home/yishu/miniconda3/envs/flowbothd/lib/python3.9/site-packages/wandb/apis/normalize.py", line 41, in wrapper
+    return func(*args, **kwargs)
+  File "/home/yishu/miniconda3/envs/flowbothd/lib/python3.9/site-packages/wandb/apis/public.py", line 928, in artifact
+    artifact = artifacts.PublicArtifact(self.client, entity, project, artifact_name)
+  File "/home/yishu/miniconda3/envs/flowbothd/lib/python3.9/site-packages/wandb/sdk/artifacts/public_artifact.py", line 225, in __init__
+    self._attrs = attrs or self._load()
+  File "/home/yishu/miniconda3/envs/flowbothd/lib/python3.9/site-packages/wandb/sdk/artifacts/public_artifact.py", line 998, in _load
+    raise ValueError(
+ValueError: Project leisure-thu-cv/flowbothd does not contain artifact: "model-hn61knsq:best"
+During handling of the above exception, another exception occurred:
+Traceback (most recent call last):
+  File "/home/yishu/FlowBotHD/scripts/eval_history_diffuser_wta.py", line 239, in main
+    artifact = run.use_artifact(checkpoint_reference, type="model")
+  File "/home/yishu/miniconda3/envs/flowbothd/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 342, in wrapper_fn
+    return func(self, *args, **kwargs)
+  File "/home/yishu/miniconda3/envs/flowbothd/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 332, in wrapper
+    return func(self, *args, **kwargs)
+  File "/home/yishu/miniconda3/envs/flowbothd/lib/python3.9/site-packages/wandb/sdk/wandb_run.py", line 2675, in use_artifact
+    artifact = public_api.artifact(type=type, name=name)
+  File "/home/yishu/miniconda3/envs/flowbothd/lib/python3.9/site-packages/wandb/apis/normalize.py", line 87, in wrapper
+    raise CommError(message, err).with_traceback(sys.exc_info()[2])
+  File "/home/yishu/miniconda3/envs/flowbothd/lib/python3.9/site-packages/wandb/apis/normalize.py", line 41, in wrapper
+    return func(*args, **kwargs)
+  File "/home/yishu/miniconda3/envs/flowbothd/lib/python3.9/site-packages/wandb/apis/public.py", line 928, in artifact
+    artifact = artifacts.PublicArtifact(self.client, entity, project, artifact_name)
+  File "/home/yishu/miniconda3/envs/flowbothd/lib/python3.9/site-packages/wandb/sdk/artifacts/public_artifact.py", line 225, in __init__
+    self._attrs = attrs or self._load()
+  File "/home/yishu/miniconda3/envs/flowbothd/lib/python3.9/site-packages/wandb/sdk/artifacts/public_artifact.py", line 998, in _load
+    raise ValueError(
+wandb.errors.CommError: Project leisure-thu-cv/flowbothd does not contain artifact: "model-hn61knsq:best"
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.

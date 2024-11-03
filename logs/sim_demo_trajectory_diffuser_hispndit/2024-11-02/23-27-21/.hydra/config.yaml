@@ -1,0 +1,56 @@
+dataset:
+  name: trajectory
+  data_dir: ${oc.env:HOME}/datasets/partnet-mobility
+  dataset_type: doors-only
+  special_req: half-half-01
+  lr: 0.001
+  mask_input_channel: true
+  randomize_camera: true
+  randomize_size: false
+  augmentation: false
+  seed: 42
+  n_points: 1200
+model:
+  name: diffuser_hispndit
+  history_model: encoder
+  time_proj_dim: 64
+  time_embed_dim: 64
+  freq_shift: 0
+  flip_sin_to_cos: true
+  num_train_timesteps: 100
+  num_inference_timesteps: 100
+  history_len: 1
+  history_dim: 128
+  batch_norm: true
+inference:
+  name: trajectory_diffuser_hispndit
+  batch_size: 64
+  trajectory_len: 1
+log_dir: ${hydra:runtime.cwd}/logs
+output_dir: ${hydra:runtime.output_dir}
+job_type: ${mode}_${dataset.name}_${model.name}
+lightning:
+  checkpoint_dir: ${output_dir}/checkpoints
+wandb:
+  entity: leisure-thu-cv
+  project: flowbothd
+  group: flowbothd
+  save_dir: ${output_dir}
+  artifact_dir: ${hydra:runtime.cwd}/wandb_artifacts
+mode: sim_demo
+seed: 42
+gui: false
+website: true
+website_port: 9001
+sgp: false
+consistency_check: true
+history_filter: true
+checkpoint:
+  run_id: hn61knsq
+  reference: ${wandb.entity}/${wandb.project}/model-${checkpoint.run_id}:best
+resources:
+  num_workers: 30
+  n_proc_per_worker: 2
+  gpus:
+  - 0
+metric_output_dir: ./logs

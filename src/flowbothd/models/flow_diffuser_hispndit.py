@@ -669,4 +669,3 @@ class FlowTrajectoryDiffuserSimulationModule_HisPNDiT(L.LightningModule):
                     batch, 0, return_intermediate=False
                 )
                 return trajectory.cpu()
-        # print("Trajectory prediction shape:", trajectory.shape)

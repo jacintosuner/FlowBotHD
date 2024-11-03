@@ -11,15 +11,17 @@ from flowbothd.datasets.flow_trajectory import FlowTrajectoryDataModule
 from flowbothd.models.flow_diffuser_dit import (
     FlowTrajectoryDiffuserInferenceModule_DiT,
 )
+from flowbothd.models.flow_diffuser_hispndit import (
+    FlowTrajectoryDiffuserInferenceModule_HisPNDiT,
+)
 from flowbothd.models.flow_diffuser_hisdit import (
     FlowTrajectoryDiffuserInferenceModule_HisDiT,
 )
 from flowbothd.models.flow_diffuser_pndit import (
     FlowTrajectoryDiffuserInferenceModule_PNDiT,
 )
-from flowbothd.models.modules.dit_models import DiT, PN2DiT
+from flowbothd.models.modules.dit_models import DiT, PN2DiT, PN2HisDiT
 from flowbothd.models.modules.history_encoder import HistoryEncoder
-from flowbothd.models.modules.history_translator import HistoryTranslator
 from flowbothd.utils.script_utils import PROJECT_ROOT, match_fn
 
 data_module_class = {
@@ -29,12 +31,12 @@ data_module_class = {
 inference_module_class = {
     "diffuser_dit": FlowTrajectoryDiffuserInferenceModule_DiT,
     "diffuser_hisdit": FlowTrajectoryDiffuserInferenceModule_HisDiT,
+    "diffuser_hispndit": FlowTrajectoryDiffuserInferenceModule_HisPNDiT,
     "diffuser_pndit": FlowTrajectoryDiffuserInferenceModule_PNDiT,
 }
 
 history_network_class = {
     "encoder": HistoryEncoder,
-    "translator": HistoryTranslator,
 }
 
 
@@ -61,44 +63,50 @@ def main(cfg):
     # dataloaders.
     ######################################################################
     trajectory_len = cfg.inference.trajectory_len
-    toy_dataset = {
-        "id": "door-full-new",
-        "train-train": [
-            "8877",
-            "8893",
-            "8897",
-            "8903",
-            "8919",
-            "8930",
-            "8961",
-            "8997",
-            "9016",
-            "9032",
-            "9035",
-            "9041",
-            "9065",
-            "9070",
-            "9107",
-            "9117",
-            "9127",
-            "9128",
-            "9148",
-            "9164",
-            "9168",
-            "9277",
-            "9280",
-            "9281",
-            "9288",
-            "9386",
-            "9388",
-            "9410",
-        ],
-        "train-test": ["8867", "8983", "8994", "9003", "9263", "9393"],
-        "test": ["8867", "8983", "8994", "9003", "9263", "9393"],
-    }
+    if cfg.dataset.dataset_type == "full-dataset":
+        # Full dataset
+        toy_dataset = None
+    else:
+        # Door dataset
+        toy_dataset = {
+            "id": "door-full-new-noslide",
+            "train-train": [
+                "8877",
+                "8893",
+                "8897",
+                "8903",
+                "8919",
+                "8930",
+                "8961",
+                "8997",
+                "9016",
+                # "9032",   # has slide
+                "9035",
+                "9041",
+                "9065",
+                "9070",
+                "9107",
+                "9117",
+                "9127",
+                "9128",
+                "9148",
+                "9164",
+                "9168",
+                "9277",
+                "9280",
+                "9281",
+                "9288",
+                "9386",
+                "9388",
+                "9410",
+            ],
+            "train-test": ["8867", "8983", "8994", "9003", "9263", "9393"],
+            "test": ["8867", "8983", "8994", "9003", "9263", "9393"],
+        }
+    
     # Create History dataset
     fully_closed_datamodule = FlowTrajectoryDataModule(
-        root="/home/yishu/datasets/partnet-mobility",
+        root=cfg.dataset.data_dir,
         batch_size=1,
         num_workers=30,
         n_proc=2,
@@ -106,22 +114,12 @@ def main(cfg):
         trajectory_len=1,  # Only used when training trajectory model
         special_req="fully-closed",
         history=True,
-        # toy_dataset = {
-        #     "id": "door-1",
-        #     "train-train": ["8994", "9035"],
-        #     "train-test": ["8994", "9035"],
-        #     "test": ["8867"],
-        #     # "train-train": ["8867"],
-        #     # "train-test": ["8867"],
-        #     # "test": ["8867"],
-        # }
-        # toy_dataset=toy_dataset,   # 1) Eval on doors
-        toy_dataset=None,  # 2) Eval on all
+        toy_dataset=toy_dataset,
         n_repeat=1,
     )
 
     randomly_opened_datamodule = FlowTrajectoryDataModule(
-        root="/home/yishu/datasets/partnet-mobility",
+        root=cfg.dataset.data_dir,
         batch_size=1,
         num_workers=30,
         n_proc=2,
@@ -129,17 +127,7 @@ def main(cfg):
         trajectory_len=1,  # Only used when training trajectory model
         special_req=None,
         history=True,
-        # toy_dataset = {
-        #     "id": "door-1",
-        #     "train-train": ["8994", "9035"],
-        #     "train-test": ["8994", "9035"],
-        #     "test": ["8867"],
-        #     # "train-train": ["8867"],
-        #     # "train-test": ["8867"],
-        #     # "test": ["8867"],
-        # }
-        # toy_dataset=toy_dataset,   # 1) Eval on doors
-        toy_dataset=None,  # 2) Eval on all
+        toy_dataset=toy_dataset,
         n_repeat=1,
     )
 
@@ -189,7 +177,27 @@ def main(cfg):
     else:
         in_channels = 1 if cfg.inference.mask_input_channel else 0
 
-    if "hisdit" in cfg.model.name:
+    # History model
+    if "hispndit" in cfg.model.name:
+        network = {
+            "DiT": PN2HisDiT(
+                history_embed_dim=cfg.model.history_dim,
+                in_channels=3,
+                depth=5,
+                hidden_size=128,
+                num_heads=4,
+                learn_sigma=True,
+            ).cuda(),
+            "History": HistoryEncoder(
+                history_dim=cfg.model.history_dim,
+                history_len=cfg.model.history_len,
+                batch_norm=cfg.model.batch_norm,
+                transformer=False,
+                repeat_dim=False,
+            ).cuda(),
+        }
+
+    elif "hisdit" in cfg.model.name:
         network = {
             "DiT": DiT(
                 in_channels=in_channels + 3 + cfg.model.history_dim,
@@ -233,12 +241,7 @@ def main(cfg):
     # else:
     #     ckpt_file = checkpoint_reference
 
-    # ckpt_file = '/home/yishu/flowbothd/logs/train_trajectory_diffuser_dit/2024-03-23/02-47-04/checkpoints/epoch=299-step=235800-val_loss=0.00-weights-only.ckpt'
-    # ckpt_file = '/home/yishu/flowbothd/logs/train_trajectory_diffuser_dgdit/2024-03-23/02-45-56/checkpoints/epoch=259-step=408720-val_loss=0.00-weights-only.ckpt'
-    ckpt_file = "/home/yishu/flowbothd/logs/train_trajectory_diffuser_dit/2024-03-30/07-12-41/checkpoints/epoch=359-step=199080-val_loss=0.00-weights-only.ckpt"
-    # ckpt_file = "/home/yishu/flowbothd/logs/train_trajectory_diffuser_pndit/2024-04-23/05-01-44/checkpoints/epoch=469-step=1038700-val_loss=0.00-weights-only.ckpt"
-    # ckpt_file = '/home/yishu/flowbothd/logs/train_trajectory_diffuser_hisdit/2024-05-01/10-18-38/checkpoints/epoch=529-step=293090-val_loss=0.00-weights-only.ckpt'
-    # ckpt_file = '/home/yishu/flowbothd/logs/train_trajectory_diffuser_hisdit/2024-05-10/12-09-08/checkpoints/epoch=439-step=243320-val_loss=0.00-weights-only.ckpt'
+    ckpt_file = "TO BE SPECIFIED"
 
     # # Load the network weights.
     # ckpt = torch.load(ckpt_file)
@@ -264,22 +267,6 @@ def main(cfg):
     model.load_from_ckpt(ckpt_file)
     model.eval()
     model.cuda()
-
-    ######################################################################
-    # Create the trainer.
-    # Bit of a misnomer here, we're not doing training. But we are gonna
-    # use it to set up the model appropriately and do all the batching
-    # etc.
-    #
-    # If this is a different kind of downstream eval, chuck this block.
-    ######################################################################
-
-    # trainer = L.Trainer(
-    #     accelerator="gpu",
-    #     devices=cfg.resources.gpus,
-    #     precision="32-true",
-    #     logger=False,
-    # )
 
     ######################################################################
     # Run the model on the train/val/test sets.

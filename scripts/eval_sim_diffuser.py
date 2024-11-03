@@ -59,8 +59,6 @@ def load_obj_id_to_category(toy_dataset=None):
 
 
 def load_obj_and_link(id_to_cat):
-    # with open("./scripts/umpnet_object_list.json", "r") as f:
-    # with open(f"{PROJECT_ROOT}/scripts/movable_links_005.json", "r") as f:
     with open(f"{PROJECT_ROOT}/scripts/movable_links_fullset_000.json", "r") as f:
         object_link_json = json.load(f)
     for id in id_to_cat.keys():
@@ -98,77 +96,49 @@ def main(cfg):
     # Should be the same one as in training, but we're gonna use val+test
     # dataloaders.
     ######################################################################
-    # datamodule = FlowBotDataModule(
-    #     root=cfg.dataset.data_dir,
-    #     batch_size=cfg.inference.batch_size,
-    #     num_workers=cfg.resources.num_workers,
-    #     n_proc=cfg.resources.n_proc_per_worker,  # Add n_proc
-    # )
-    # toy_dataset = None   (1)
-    # toy_dataset = {   # For half-half door training   (2)
-    #     "id": "door-full-new",
-    #     "train-train": [
-    #         "8877",
-    #         "8893",
-    #         "8897",
-    #         "8903",
-    #         "8919",
-    #         "8930",
-    #         "8961",
-    #         "8997",
-    #         "9016",
-    #         "9032",
-    #         "9035",
-    #         "9041",
-    #         "9065",
-    #         "9070",
-    #         "9107",
-    #         "9117",
-    #         "9127",
-    #         "9128",
-    #         "9148",
-    #         "9164",
-    #         "9168",
-    #         "9277",
-    #         "9280",
-    #         "9281",
-    #         "9288",
-    #         "9386",
-    #         "9388",
-    #         "9410",
-    #     ],
-    #     "train-test": ["8867", "8983", "8994", "9003", "9263", "9393"],
-    #     "test": ["8867", "8983", "8994", "9003", "9263", "9393"],
-    # }
-    # toy_dataset = {  # For half-half fullset training
-    #     "id": "door-full-fullset",
-    #     "train-train": [
-    #         "9281",
-    #         "9107",
-    #         "8997",
-    #         "9280",
-    #         "9070",
-    #         "8919",
-    #         "9168",
-    #         "8983",
-    #         "9016",
-    #         "9117",
-    #         "9041",
-    #         "9164",
-    #         "8936",
-    #         "8897",
-    #         "9386",
-    #         "9288",
-    #         "8903",
-    #         "9128",
-    #         "8930",
-    #         "8961",
-    #         "9003",
-    #     ],
-    #     "train-test": ["9065", "8867", "9410", "9388", "8893", "8877"],
-    #     "test": ["9065", "8867", "9410", "9388", "8893", "8877"],
-    # }
-    toy_dataset = None  # Full dataset!
+   
+    
+    if cfg.dataset.dataset_type == "full-dataset":
+        # Full dataset
+        toy_dataset = None
+    else:
+        # Door dataset
+        toy_dataset = {
+            "id": "door-full-new-noslide",
+            "train-train": [
+                "8877",
+                "8893",
+                "8897",
+                "8903",
+                "8919",
+                "8930",
+                "8961",
+                "8997",
+                "9016",
+                # "9032",   # has slide
+                "9035",
+                "9041",
+                "9065",
+                "9070",
+                "9107",
+                "9117",
+                "9127",
+                "9128",
+                "9148",
+                "9164",
+                "9168",
+                "9277",
+                "9280",
+                "9281",
+                "9288",
+                "9386",
+                "9388",
+                "9410",
+            ],
+            "train-test": ["8867", "8983", "8994", "9003", "9263", "9393"],
+            "test": ["8867", "8983", "8994", "9003", "9263", "9393"],
+        }
+
     id_to_cat = load_obj_id_to_category(toy_dataset)
     object_to_link = load_obj_and_link(id_to_cat)
     ######################################################################
@@ -262,7 +232,7 @@ def main(cfg):
     # else:
     #     ckpt_file = checkpoint_reference
     # ckpt_file = "/home/yishu/flowbothd/logs/train_trajectory_diffuser_dit/2024-03-30/07-12-41/checkpoints/epoch=359-step=199080-val_loss=0.00-weights-only.ckpt"
-    ckpt_file = "/home/yishu/flowbothd/logs/train_trajectory_diffuser_pndit/2024-04-23/05-01-44/checkpoints/epoch=469-step=1038700-val_loss=0.00-weights-only.ckpt"
+    ckpt_file = "TO BE SPECIFIED"
 
     # # Load the network weights.
     # ckpt = torch.load(ckpt_file)
@@ -297,7 +267,7 @@ def main(cfg):
     for obj_id, obj_cat in tqdm.tqdm(list(id_to_cat.items())):
         if "test" not in obj_cat:
             continue
-        if not os.path.exists(f"/home/yishu/datasets/partnet-mobility/raw/{obj_id}"):
+        if not os.path.exists(f"{cfg.dataset.data_dir}/raw/{obj_id}"):
             continue
         available_links = object_to_link[obj_id]
         if len(available_links) == 0:

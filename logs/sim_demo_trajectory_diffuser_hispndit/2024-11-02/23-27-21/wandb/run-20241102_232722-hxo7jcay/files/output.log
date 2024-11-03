@@ -1,0 +1,38 @@
+Simulating
+OBJ 8867 of train-test
+available_joints: ['link_1']
+opening link_1
+100%|███████████████████████████████████████████████████████| 33/33 [00:00<00:00, 524288.00it/s]
+  0%|                                                                     | 0/5 [00:00<?, ?it/s]/home/yishu/miniconda3/envs/flowbothd/lib/python3.9/site-packages/flowbothd/simulations/suction.py:1559: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at ../torch/csrc/utils/tensor_new.cpp:245.)
+  torch.as_tensor([P_world]),
+  0%|                                                                     | 0/5 [00:29<?, ?it/s]
+Traceback (most recent call last):
+  File "/home/yishu/FlowBotHD/scripts/eval_sim_diffuser_history.py", line 441, in <module>
+    main()
+  File "/home/yishu/miniconda3/envs/flowbothd/lib/python3.9/site-packages/hydra/main.py", line 94, in decorated_main
+    _run_hydra(
+  File "/home/yishu/miniconda3/envs/flowbothd/lib/python3.9/site-packages/hydra/_internal/utils.py", line 394, in _run_hydra
+    _run_app(
+  File "/home/yishu/miniconda3/envs/flowbothd/lib/python3.9/site-packages/hydra/_internal/utils.py", line 457, in _run_app
+    run_and_report(
+  File "/home/yishu/miniconda3/envs/flowbothd/lib/python3.9/site-packages/hydra/_internal/utils.py", line 220, in run_and_report
+    return func()
+  File "/home/yishu/miniconda3/envs/flowbothd/lib/python3.9/site-packages/hydra/_internal/utils.py", line 458, in <lambda>
+    lambda: hydra.run(
+  File "/home/yishu/miniconda3/envs/flowbothd/lib/python3.9/site-packages/hydra/_internal/hydra.py", line 119, in run
+    ret = run_job(
+  File "/home/yishu/miniconda3/envs/flowbothd/lib/python3.9/site-packages/hydra/core/utils.py", line 186, in run_job
+    ret.return_value = task_function(task_cfg)
+  File "/home/yishu/FlowBotHD/scripts/eval_sim_diffuser_history.py", line 360, in main
+    trial_figs, trial_results, sim_trajectory = trial_with_diffuser_history(
+  File "/home/yishu/miniconda3/envs/flowbothd/lib/python3.9/site-packages/flowbothd/simulations/simulation.py", line 414, in trial_with_diffuser_history
+    fig, result, sim_trajectory = run_trial_with_history_filter(
+  File "/home/yishu/miniconda3/envs/flowbothd/lib/python3.9/site-packages/flowbothd/simulations/suction.py", line 1646, in run_trial_with_history_filter
+    pc_obs = env.render(
+  File "/home/yishu/miniconda3/envs/flowbothd/lib/python3.9/site-packages/flowbothd/simulations/suction.py", line 118, in render
+    output = self.render_env.render()
+  File "/home/yishu/miniconda3/envs/flowbothd/lib/python3.9/site-packages/rpad/partnet_mobility_utils/render/pybullet.py", line 366, in render
+    rgb, depth, seg, P_cam, P_world, pc_seg, segmap = self.camera.render(
+  File "/home/yishu/miniconda3/envs/flowbothd/lib/python3.9/site-packages/rpad/partnet_mobility_utils/render/pybullet.py", line 234, in render
+    _, _, rgb, zbuffer, seg = p.getCameraImage(
+KeyboardInterrupt

@@ -1,0 +1,204 @@
+2024-11-02 23:15:41,711 INFO    StreamThr :455785 [internal.py:wandb_internal():86] W&B internal server running at pid: 455785, started at: 2024-11-02 23:15:41.711488
+2024-11-02 23:15:41,712 DEBUG   HandlerThread:455785 [handler.py:handle_request():144] handle_request: status
+2024-11-02 23:15:41,716 INFO    WriterThread:455785 [datastore.py:open_for_write():85] open: /home/yishu/FlowBotHD/logs/eval_history_trajectory_diffuser_hispndit/2024-11-02/23-15-40/wandb/run-20241102_231541-13l1ldyq/run-13l1ldyq.wandb
+2024-11-02 23:15:41,716 DEBUG   SenderThread:455785 [sender.py:send():369] send: header
+2024-11-02 23:15:41,745 DEBUG   SenderThread:455785 [sender.py:send():369] send: run
+2024-11-02 23:15:41,939 INFO    SenderThread:455785 [dir_watcher.py:__init__():211] watching files in: /home/yishu/FlowBotHD/logs/eval_history_trajectory_diffuser_hispndit/2024-11-02/23-15-40/wandb/run-20241102_231541-13l1ldyq/files
+2024-11-02 23:15:41,940 INFO    SenderThread:455785 [sender.py:_start_run_threads():1100] run started: 13l1ldyq with start time 1730603741.711654
+2024-11-02 23:15:41,940 DEBUG   SenderThread:455785 [sender.py:send_request():396] send_request: summary_record
+2024-11-02 23:15:41,940 INFO    SenderThread:455785 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2024-11-02 23:15:41,942 DEBUG   HandlerThread:455785 [handler.py:handle_request():144] handle_request: check_version
+2024-11-02 23:15:41,942 DEBUG   SenderThread:455785 [sender.py:send_request():396] send_request: check_version
+2024-11-02 23:15:42,016 DEBUG   HandlerThread:455785 [handler.py:handle_request():144] handle_request: run_start
+2024-11-02 23:15:42,023 DEBUG   HandlerThread:455785 [system_info.py:__init__():31] System info init
+2024-11-02 23:15:42,023 DEBUG   HandlerThread:455785 [system_info.py:__init__():46] System info init done
+2024-11-02 23:15:42,024 INFO    HandlerThread:455785 [system_monitor.py:start():181] Starting system monitor
+2024-11-02 23:15:42,024 INFO    SystemMonitor:455785 [system_monitor.py:_start():145] Starting system asset monitoring threads
+2024-11-02 23:15:42,024 INFO    HandlerThread:455785 [system_monitor.py:probe():201] Collecting system info
+2024-11-02 23:15:42,024 INFO    SystemMonitor:455785 [interfaces.py:start():190] Started cpu monitoring
+2024-11-02 23:15:42,024 INFO    SystemMonitor:455785 [interfaces.py:start():190] Started disk monitoring
+2024-11-02 23:15:42,025 INFO    SystemMonitor:455785 [interfaces.py:start():190] Started gpu monitoring
+2024-11-02 23:15:42,025 INFO    SystemMonitor:455785 [interfaces.py:start():190] Started memory monitoring
+2024-11-02 23:15:42,025 INFO    SystemMonitor:455785 [interfaces.py:start():190] Started network monitoring
+2024-11-02 23:15:42,038 DEBUG   HandlerThread:455785 [system_info.py:probe():195] Probing system
+2024-11-02 23:15:42,046 DEBUG   HandlerThread:455785 [system_info.py:_probe_git():180] Probing git
+2024-11-02 23:15:42,058 DEBUG   HandlerThread:455785 [system_info.py:_probe_git():188] Probing git done
+2024-11-02 23:15:42,058 DEBUG   HandlerThread:455785 [system_info.py:probe():240] Probing system done
+2024-11-02 23:15:42,059 DEBUG   HandlerThread:455785 [system_monitor.py:probe():210] {'os': 'Linux-6.8.0-47-generic-x86_64-with-glibc2.35', 'python': '3.9.20', 'heartbeatAt': '2024-11-03T03:15:42.038331', 'startedAt': '2024-11-03T03:15:41.706189', 'docker': None, 'cuda': None, 'args': (), 'state': 'running', 'program': '/home/yishu/FlowBotHD/scripts/eval_history_diffuser_wta.py', 'codePath': 'scripts/eval_history_diffuser_wta.py', 'git': {'remote': 'git@github.com:liy1shu/FlowBotHD.git', 'commit': '0e5af3de87f6e7edfaba0b2481e282f52eda02c0'}, 'email': 'liyishu19@mails.tsinghua.edu.cn', 'root': '/home/yishu/FlowBotHD', 'host': 'sisyphus', 'username': 'yishu', 'executable': '/home/yishu/miniconda3/envs/flowbothd/bin/python', 'cpu_count': 32, 'cpu_count_logical': 64, 'cpu_freq': {'current': 1322.393578125, 'min': 545.0, 'max': 6033.6875}, 'cpu_freq_per_core': [{'current': 2490.804, 'min': 545.0, 'max': 5352.0}, {'current': 3371.376, 'min': 545.0, 'max': 5352.0}, {'current': 545.0, 'min': 545.0, 'max': 5352.0}, {'current': 545.0, 'min': 545.0, 'max': 5352.0}, {'current': 545.0, 'min': 545.0, 'max': 5352.0}, {'current': 2248.265, 'min': 545.0, 'max': 5352.0}, {'current': 545.0, 'min': 545.0, 'max': 5352.0}, {'current': 545.0, 'min': 545.0, 'max': 5352.0}, {'current': 5042.003, 'min': 545.0, 'max': 6001.0}, {'current': 545.0, 'min': 545.0, 'max': 6161.0}, {'current': 545.0, 'min': 545.0, 'max': 5837.0}, {'current': 545.0, 'min': 545.0, 'max': 6646.0}, {'current': 545.0, 'min': 545.0, 'max': 6321.0}, {'current': 545.0, 'min': 545.0, 'max': 6482.0}, {'current': 545.0, 'min': 545.0, 'max': 5517.0}, {'current': 545.0, 'min': 545.0, 'max': 5677.0}, {'current': 545.0, 'min': 545.0, 'max': 6966.0}, {'current': 2135.632, 'min': 545.0, 'max': 6806.0}, {'current': 3162.542, 'min': 545.0, 'max': 7775.0}, {'current': 545.0, 'min': 545.0, 'max': 7130.0}, {'current': 5340.113, 'min': 545.0, 'max': 7290.0}, {'current': 2668.815, 'min': 545.0, 'max': 7775.0}, {'current': 545.0, 'min': 545.0, 'max': 7451.0}, {'current': 545.0, 'min': 545.0, 'max': 7611.0}, {'current': 545.0, 'min': 545.0, 'max': 5352.0}, {'current': 545.0, 'min': 545.0, 'max': 5352.0}, {'current': 545.0, 'min': 545.0, 'max': 5352.0}, {'current': 545.0, 'min': 545.0, 'max': 5352.0}, {'current': 5005.757, 'min': 545.0, 'max': 5352.0}, {'current': 2017.13, 'min': 545.0, 'max': 5352.0}, {'current': 545.0, 'min': 545.0, 'max': 5352.0}, {'current': 545.0, 'min': 545.0, 'max': 5352.0}, {'current': 545.0, 'min': 545.0, 'max': 5352.0}, {'current': 545.0, 'min': 545.0, 'max': 5352.0}, {'current': 545.0, 'min': 545.0, 'max': 5352.0}, {'current': 545.0, 'min': 545.0, 'max': 5352.0}, {'current': 545.0, 'min': 545.0, 'max': 5352.0}, {'current': 545.0, 'min': 545.0, 'max': 5352.0}, {'current': 545.0, 'min': 545.0, 'max': 5352.0}, {'current': 5090.62, 'min': 545.0, 'max': 5352.0}, {'current': 545.0, 'min': 545.0, 'max': 6001.0}, {'current': 545.0, 'min': 545.0, 'max': 6161.0}, {'current': 545.0, 'min': 545.0, 'max': 5837.0}, {'current': 545.0, 'min': 545.0, 'max': 6646.0}, {'current': 545.0, 'min': 545.0, 'max': 6321.0}, {'current': 545.0, 'min': 545.0, 'max': 6482.0}, {'current': 545.0, 'min': 545.0, 'max': 5517.0}, {'current': 545.0, 'min': 545.0, 'max': 5677.0}, {'current': 545.0, 'min': 545.0, 'max': 6966.0}, {'current': 545.0, 'min': 545.0, 'max': 6806.0}, {'current': 545.0, 'min': 545.0, 'max': 7775.0}, {'current': 545.0, 'min': 545.0, 'max': 7130.0}, {'current': 545.0, 'min': 545.0, 'max': 7290.0}, {'current': 545.0, 'min': 545.0, 'max': 7775.0}, {'current': 1795.996, 'min': 545.0, 'max': 7451.0}, {'current': 545.0, 'min': 545.0, 'max': 7611.0}, {'current': 545.0, 'min': 545.0, 'max': 5352.0}, {'current': 545.0, 'min': 545.0, 'max': 5352.0}, {'current': 3074.008, 'min': 545.0, 'max': 5352.0}, {'current': 5018.619, 'min': 545.0, 'max': 5352.0}, {'current': 545.0, 'min': 545.0, 'max': 5352.0}, {'current': 545.0, 'min': 545.0, 'max': 5352.0}, {'current': 545.0, 'min': 545.0, 'max': 5352.0}, {'current': 545.0, 'min': 545.0, 'max': 5352.0}], 'disk': {'total': 1832.2072448730469, 'used': 544.645751953125}, 'gpu': 'NVIDIA GeForce RTX 4090', 'gpu_count': 2, 'gpu_devices': [{'name': 'NVIDIA GeForce RTX 4090', 'memory_total': 25757220864}, {'name': 'NVIDIA GeForce RTX 4090', 'memory_total': 25757220864}], 'memory': {'total': 251.20022201538086}}
+2024-11-02 23:15:42,059 INFO    HandlerThread:455785 [system_monitor.py:probe():211] Finished collecting system info
+2024-11-02 23:15:42,059 INFO    HandlerThread:455785 [system_monitor.py:probe():214] Publishing system info
+2024-11-02 23:15:42,059 DEBUG   HandlerThread:455785 [system_info.py:_save_pip():51] Saving list of pip packages installed into the current environment
+2024-11-02 23:15:42,059 DEBUG   HandlerThread:455785 [system_info.py:_save_pip():67] Saving pip packages done
+2024-11-02 23:15:42,059 DEBUG   HandlerThread:455785 [system_info.py:_save_conda():74] Saving list of conda packages installed into the current environment
+2024-11-02 23:15:42,941 INFO    Thread-12 :455785 [dir_watcher.py:_on_file_created():272] file/dir created: /home/yishu/FlowBotHD/logs/eval_history_trajectory_diffuser_hispndit/2024-11-02/23-15-40/wandb/run-20241102_231541-13l1ldyq/files/requirements.txt
+2024-11-02 23:15:42,941 INFO    Thread-12 :455785 [dir_watcher.py:_on_file_created():272] file/dir created: /home/yishu/FlowBotHD/logs/eval_history_trajectory_diffuser_hispndit/2024-11-02/23-15-40/wandb/run-20241102_231541-13l1ldyq/files/conda-environment.yaml
+2024-11-02 23:15:42,941 INFO    Thread-12 :455785 [dir_watcher.py:_on_file_created():272] file/dir created: /home/yishu/FlowBotHD/logs/eval_history_trajectory_diffuser_hispndit/2024-11-02/23-15-40/wandb/run-20241102_231541-13l1ldyq/files/wandb-summary.json
+2024-11-02 23:15:45,088 DEBUG   HandlerThread:455785 [system_info.py:_save_conda():86] Saving conda packages done
+2024-11-02 23:15:45,088 DEBUG   HandlerThread:455785 [system_info.py:_save_code():89] Saving code
+2024-11-02 23:15:45,097 DEBUG   HandlerThread:455785 [system_info.py:_save_code():110] Saving code done
+2024-11-02 23:15:45,097 DEBUG   HandlerThread:455785 [system_info.py:_save_patches():127] Saving git patches
+2024-11-02 23:15:45,149 DEBUG   HandlerThread:455785 [system_info.py:_save_patches():169] Saving git patches done
+2024-11-02 23:15:45,150 INFO    HandlerThread:455785 [system_monitor.py:probe():216] Finished publishing system info
+2024-11-02 23:15:45,152 DEBUG   SenderThread:455785 [sender.py:send():369] send: files
+2024-11-02 23:15:45,152 INFO    SenderThread:455785 [sender.py:_save_file():1354] saving file wandb-metadata.json with policy now
+2024-11-02 23:15:45,153 INFO    SenderThread:455785 [sender.py:_save_file():1354] saving file code/scripts/eval_history_diffuser_wta.py with policy now
+2024-11-02 23:15:45,153 INFO    SenderThread:455785 [sender.py:_save_file():1354] saving file diff.patch with policy now
+2024-11-02 23:15:45,153 INFO    SenderThread:455785 [sender.py:_save_file():1354] saving file upstream_diff_62b7b3cb9d6dd530399313b04e5d9cf0a8a307fc.patch with policy now
+2024-11-02 23:15:45,156 DEBUG   HandlerThread:455785 [handler.py:handle_request():144] handle_request: stop_status
+2024-11-02 23:15:45,156 DEBUG   SenderThread:455785 [sender.py:send():369] send: telemetry
+2024-11-02 23:15:45,156 DEBUG   SenderThread:455785 [sender.py:send_request():396] send_request: stop_status
+2024-11-02 23:15:45,316 INFO    wandb-upload_1:455785 [upload_job.py:push():113] Skipped uploading /tmp/tmpw34ncicywandb/whmexccl-code/scripts/eval_history_diffuser_wta.py
+2024-11-02 23:15:45,469 INFO    wandb-upload_0:455785 [upload_job.py:push():133] Uploaded file /tmp/tmpw34ncicywandb/k34t0iq3-wandb-metadata.json
+2024-11-02 23:15:45,512 INFO    wandb-upload_2:455785 [upload_job.py:push():133] Uploaded file /tmp/tmpw34ncicywandb/9p05tr7h-diff.patch
+2024-11-02 23:15:45,606 INFO    wandb-upload_3:455785 [upload_job.py:push():133] Uploaded file /tmp/tmpw34ncicywandb/ytddqedf-upstream_diff_62b7b3cb9d6dd530399313b04e5d9cf0a8a307fc.patch
+2024-11-02 23:15:45,942 DEBUG   SenderThread:455785 [sender.py:send():369] send: exit
+2024-11-02 23:15:45,942 INFO    SenderThread:455785 [sender.py:send_exit():574] handling exit code: 1
+2024-11-02 23:15:45,942 INFO    SenderThread:455785 [sender.py:send_exit():576] handling runtime: 3
+2024-11-02 23:15:45,944 INFO    SenderThread:455785 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2024-11-02 23:15:45,944 INFO    SenderThread:455785 [sender.py:send_exit():582] send defer
+2024-11-02 23:15:45,944 DEBUG   HandlerThread:455785 [handler.py:handle_request():144] handle_request: defer
+2024-11-02 23:15:45,944 INFO    HandlerThread:455785 [handler.py:handle_request_defer():170] handle defer: 0
+2024-11-02 23:15:45,944 INFO    Thread-12 :455785 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/yishu/FlowBotHD/logs/eval_history_trajectory_diffuser_hispndit/2024-11-02/23-15-40/wandb/run-20241102_231541-13l1ldyq/files/conda-environment.yaml
+2024-11-02 23:15:45,944 INFO    Thread-12 :455785 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/yishu/FlowBotHD/logs/eval_history_trajectory_diffuser_hispndit/2024-11-02/23-15-40/wandb/run-20241102_231541-13l1ldyq/files/wandb-summary.json
+2024-11-02 23:15:45,944 INFO    Thread-12 :455785 [dir_watcher.py:_on_file_created():272] file/dir created: /home/yishu/FlowBotHD/logs/eval_history_trajectory_diffuser_hispndit/2024-11-02/23-15-40/wandb/run-20241102_231541-13l1ldyq/files/code/scripts/eval_history_diffuser_wta.py
+2024-11-02 23:15:45,945 DEBUG   SenderThread:455785 [sender.py:send_request():396] send_request: defer
+2024-11-02 23:15:45,945 INFO    SenderThread:455785 [sender.py:send_request_defer():598] handle sender defer: 0
+2024-11-02 23:15:45,945 INFO    SenderThread:455785 [sender.py:transition_state():602] send defer: 1
+2024-11-02 23:15:45,945 INFO    Thread-12 :455785 [dir_watcher.py:_on_file_created():272] file/dir created: /home/yishu/FlowBotHD/logs/eval_history_trajectory_diffuser_hispndit/2024-11-02/23-15-40/wandb/run-20241102_231541-13l1ldyq/files/upstream_diff_62b7b3cb9d6dd530399313b04e5d9cf0a8a307fc.patch
+2024-11-02 23:15:45,945 DEBUG   HandlerThread:455785 [handler.py:handle_request():144] handle_request: defer
+2024-11-02 23:15:45,945 INFO    HandlerThread:455785 [handler.py:handle_request_defer():170] handle defer: 1
+2024-11-02 23:15:45,945 INFO    Thread-12 :455785 [dir_watcher.py:_on_file_created():272] file/dir created: /home/yishu/FlowBotHD/logs/eval_history_trajectory_diffuser_hispndit/2024-11-02/23-15-40/wandb/run-20241102_231541-13l1ldyq/files/output.log
+2024-11-02 23:15:45,945 DEBUG   SenderThread:455785 [sender.py:send_request():396] send_request: defer
+2024-11-02 23:15:45,945 INFO    SenderThread:455785 [sender.py:send_request_defer():598] handle sender defer: 1
+2024-11-02 23:15:45,945 INFO    SenderThread:455785 [sender.py:transition_state():602] send defer: 2
+2024-11-02 23:15:45,945 INFO    Thread-12 :455785 [dir_watcher.py:_on_file_created():272] file/dir created: /home/yishu/FlowBotHD/logs/eval_history_trajectory_diffuser_hispndit/2024-11-02/23-15-40/wandb/run-20241102_231541-13l1ldyq/files/wandb-metadata.json
+2024-11-02 23:15:45,945 DEBUG   HandlerThread:455785 [handler.py:handle_request():144] handle_request: defer
+2024-11-02 23:15:45,945 INFO    HandlerThread:455785 [handler.py:handle_request_defer():170] handle defer: 2
+2024-11-02 23:15:45,945 INFO    HandlerThread:455785 [system_monitor.py:finish():190] Stopping system monitor
+2024-11-02 23:15:45,945 DEBUG   SystemMonitor:455785 [system_monitor.py:_start():159] Starting system metrics aggregation loop
+2024-11-02 23:15:45,945 INFO    Thread-12 :455785 [dir_watcher.py:_on_file_created():272] file/dir created: /home/yishu/FlowBotHD/logs/eval_history_trajectory_diffuser_hispndit/2024-11-02/23-15-40/wandb/run-20241102_231541-13l1ldyq/files/diff.patch
+2024-11-02 23:15:45,946 INFO    HandlerThread:455785 [interfaces.py:finish():202] Joined cpu monitor
+2024-11-02 23:15:45,946 DEBUG   SystemMonitor:455785 [system_monitor.py:_start():166] Finished system metrics aggregation loop
+2024-11-02 23:15:45,946 INFO    HandlerThread:455785 [interfaces.py:finish():202] Joined disk monitor
+2024-11-02 23:15:45,946 INFO    Thread-12 :455785 [dir_watcher.py:_on_file_created():272] file/dir created: /home/yishu/FlowBotHD/logs/eval_history_trajectory_diffuser_hispndit/2024-11-02/23-15-40/wandb/run-20241102_231541-13l1ldyq/files/code/scripts
+2024-11-02 23:15:45,946 DEBUG   SystemMonitor:455785 [system_monitor.py:_start():170] Publishing last batch of metrics
+2024-11-02 23:15:45,947 INFO    Thread-12 :455785 [dir_watcher.py:_on_file_created():272] file/dir created: /home/yishu/FlowBotHD/logs/eval_history_trajectory_diffuser_hispndit/2024-11-02/23-15-40/wandb/run-20241102_231541-13l1ldyq/files/code
+2024-11-02 23:15:46,119 INFO    HandlerThread:455785 [interfaces.py:finish():202] Joined gpu monitor
+2024-11-02 23:15:46,119 INFO    HandlerThread:455785 [interfaces.py:finish():202] Joined memory monitor
+2024-11-02 23:15:46,119 INFO    HandlerThread:455785 [interfaces.py:finish():202] Joined network monitor
+2024-11-02 23:15:46,120 DEBUG   SenderThread:455785 [sender.py:send_request():396] send_request: defer
+2024-11-02 23:15:46,120 INFO    SenderThread:455785 [sender.py:send_request_defer():598] handle sender defer: 2
+2024-11-02 23:15:46,120 INFO    SenderThread:455785 [sender.py:transition_state():602] send defer: 3
+2024-11-02 23:15:46,120 DEBUG   SenderThread:455785 [sender.py:send():369] send: stats
+2024-11-02 23:15:46,120 DEBUG   HandlerThread:455785 [handler.py:handle_request():144] handle_request: defer
+2024-11-02 23:15:46,120 INFO    HandlerThread:455785 [handler.py:handle_request_defer():170] handle defer: 3
+2024-11-02 23:15:46,120 DEBUG   SenderThread:455785 [sender.py:send_request():396] send_request: defer
+2024-11-02 23:15:46,120 INFO    SenderThread:455785 [sender.py:send_request_defer():598] handle sender defer: 3
+2024-11-02 23:15:46,121 INFO    SenderThread:455785 [sender.py:transition_state():602] send defer: 4
+2024-11-02 23:15:46,121 DEBUG   HandlerThread:455785 [handler.py:handle_request():144] handle_request: defer
+2024-11-02 23:15:46,121 INFO    HandlerThread:455785 [handler.py:handle_request_defer():170] handle defer: 4
+2024-11-02 23:15:46,121 DEBUG   SenderThread:455785 [sender.py:send_request():396] send_request: defer
+2024-11-02 23:15:46,121 INFO    SenderThread:455785 [sender.py:send_request_defer():598] handle sender defer: 4
+2024-11-02 23:15:46,121 INFO    SenderThread:455785 [sender.py:transition_state():602] send defer: 5
+2024-11-02 23:15:46,121 DEBUG   HandlerThread:455785 [handler.py:handle_request():144] handle_request: defer
+2024-11-02 23:15:46,121 INFO    HandlerThread:455785 [handler.py:handle_request_defer():170] handle defer: 5
+2024-11-02 23:15:46,121 DEBUG   SenderThread:455785 [sender.py:send():369] send: summary
+2024-11-02 23:15:46,121 INFO    SenderThread:455785 [sender.py:_save_file():1354] saving file wandb-summary.json with policy end
+2024-11-02 23:15:46,121 DEBUG   SenderThread:455785 [sender.py:send_request():396] send_request: defer
+2024-11-02 23:15:46,121 INFO    SenderThread:455785 [sender.py:send_request_defer():598] handle sender defer: 5
+2024-11-02 23:15:46,121 INFO    SenderThread:455785 [sender.py:transition_state():602] send defer: 6
+2024-11-02 23:15:46,121 DEBUG   HandlerThread:455785 [handler.py:handle_request():144] handle_request: defer
+2024-11-02 23:15:46,121 INFO    HandlerThread:455785 [handler.py:handle_request_defer():170] handle defer: 6
+2024-11-02 23:15:46,121 DEBUG   SenderThread:455785 [sender.py:send_request():396] send_request: defer
+2024-11-02 23:15:46,121 INFO    SenderThread:455785 [sender.py:send_request_defer():598] handle sender defer: 6
+2024-11-02 23:15:46,123 DEBUG   HandlerThread:455785 [handler.py:handle_request():144] handle_request: status_report
+2024-11-02 23:15:46,364 INFO    SenderThread:455785 [sender.py:transition_state():602] send defer: 7
+2024-11-02 23:15:46,364 DEBUG   HandlerThread:455785 [handler.py:handle_request():144] handle_request: defer
+2024-11-02 23:15:46,365 INFO    HandlerThread:455785 [handler.py:handle_request_defer():170] handle defer: 7
+2024-11-02 23:15:46,365 DEBUG   SenderThread:455785 [sender.py:send_request():396] send_request: defer
+2024-11-02 23:15:46,365 INFO    SenderThread:455785 [sender.py:send_request_defer():598] handle sender defer: 7
+2024-11-02 23:15:46,943 DEBUG   HandlerThread:455785 [handler.py:handle_request():144] handle_request: poll_exit
+2024-11-02 23:15:46,944 INFO    Thread-12 :455785 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/yishu/FlowBotHD/logs/eval_history_trajectory_diffuser_hispndit/2024-11-02/23-15-40/wandb/run-20241102_231541-13l1ldyq/files/wandb-summary.json
+2024-11-02 23:15:46,945 INFO    Thread-12 :455785 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/yishu/FlowBotHD/logs/eval_history_trajectory_diffuser_hispndit/2024-11-02/23-15-40/wandb/run-20241102_231541-13l1ldyq/files/config.yaml
+2024-11-02 23:15:47,679 INFO    SenderThread:455785 [sender.py:transition_state():602] send defer: 8
+2024-11-02 23:15:47,679 DEBUG   SenderThread:455785 [sender.py:send_request():396] send_request: poll_exit
+2024-11-02 23:15:47,679 DEBUG   HandlerThread:455785 [handler.py:handle_request():144] handle_request: defer
+2024-11-02 23:15:47,679 INFO    HandlerThread:455785 [handler.py:handle_request_defer():170] handle defer: 8
+2024-11-02 23:15:47,680 DEBUG   SenderThread:455785 [sender.py:send_request():396] send_request: defer
+2024-11-02 23:15:47,680 INFO    SenderThread:455785 [sender.py:send_request_defer():598] handle sender defer: 8
+2024-11-02 23:15:47,680 INFO    SenderThread:455785 [job_builder.py:build():232] Attempting to build job artifact
+2024-11-02 23:15:47,680 INFO    SenderThread:455785 [job_builder.py:build():256] is repo sourced job
+2024-11-02 23:15:47,682 INFO    SenderThread:455785 [job_builder.py:build():297] adding wandb-job metadata file
+2024-11-02 23:15:47,692 INFO    SenderThread:455785 [sender.py:transition_state():602] send defer: 9
+2024-11-02 23:15:47,692 DEBUG   HandlerThread:455785 [handler.py:handle_request():144] handle_request: defer
+2024-11-02 23:15:47,693 INFO    HandlerThread:455785 [handler.py:handle_request_defer():170] handle defer: 9
+2024-11-02 23:15:47,693 DEBUG   SenderThread:455785 [sender.py:send():369] send: artifact
+2024-11-02 23:15:47,944 DEBUG   HandlerThread:455785 [handler.py:handle_request():144] handle_request: poll_exit
+2024-11-02 23:15:47,945 INFO    Thread-12 :455785 [dir_watcher.py:_on_file_modified():289] file/dir modified: /home/yishu/FlowBotHD/logs/eval_history_trajectory_diffuser_hispndit/2024-11-02/23-15-40/wandb/run-20241102_231541-13l1ldyq/files/output.log
+2024-11-02 23:15:48,157 INFO    wandb-upload_0:455785 [upload_job.py:push():88] Skipped uploading /home/yishu/.local/share/wandb/artifacts/staging/tmp5n6ngca9
+2024-11-02 23:15:48,157 INFO    wandb-upload_2:455785 [upload_job.py:push():88] Skipped uploading /home/yishu/.local/share/wandb/artifacts/staging/tmpyjckj236
+2024-11-02 23:15:48,418 INFO    wandb-upload_1:455785 [upload_job.py:push():91] Uploaded file /home/yishu/.local/share/wandb/artifacts/staging/tmpilym89xq
+2024-11-02 23:15:49,118 INFO    SenderThread:455785 [sender.py:send_artifact():1450] sent artifact job-git_github.com_liy1shu_FlowBotHD.git_scripts_eval_history_diffuser_wta.py - {'id': 'QXJ0aWZhY3Q6MTMwNjA1NjUyMg==', 'digest': 'd3811fcbb57e9bf1f5ceaacd8d2fd808', 'state': 'PENDING', 'aliases': [], 'artifactSequence': {'id': 'QXJ0aWZhY3RDb2xsZWN0aW9uOjQ4NDEwNDAzMg==', 'latestArtifact': {'id': 'QXJ0aWZhY3Q6MTMwNjA1NjEzNA==', 'versionIndex': 3}}, 'version': 'latest'}
+2024-11-02 23:15:49,118 DEBUG   SenderThread:455785 [sender.py:send_request():396] send_request: defer
+2024-11-02 23:15:49,118 INFO    SenderThread:455785 [sender.py:send_request_defer():598] handle sender defer: 9
+2024-11-02 23:15:49,119 INFO    SenderThread:455785 [dir_watcher.py:finish():359] shutting down directory watcher
+2024-11-02 23:15:49,946 INFO    SenderThread:455785 [dir_watcher.py:finish():389] scan: /home/yishu/FlowBotHD/logs/eval_history_trajectory_diffuser_hispndit/2024-11-02/23-15-40/wandb/run-20241102_231541-13l1ldyq/files
+2024-11-02 23:15:49,946 INFO    SenderThread:455785 [dir_watcher.py:finish():403] scan save: /home/yishu/FlowBotHD/logs/eval_history_trajectory_diffuser_hispndit/2024-11-02/23-15-40/wandb/run-20241102_231541-13l1ldyq/files/requirements.txt requirements.txt
+2024-11-02 23:15:49,947 INFO    SenderThread:455785 [dir_watcher.py:finish():403] scan save: /home/yishu/FlowBotHD/logs/eval_history_trajectory_diffuser_hispndit/2024-11-02/23-15-40/wandb/run-20241102_231541-13l1ldyq/files/output.log output.log
+2024-11-02 23:15:49,947 INFO    SenderThread:455785 [dir_watcher.py:finish():403] scan save: /home/yishu/FlowBotHD/logs/eval_history_trajectory_diffuser_hispndit/2024-11-02/23-15-40/wandb/run-20241102_231541-13l1ldyq/files/diff.patch diff.patch
+2024-11-02 23:15:49,947 INFO    SenderThread:455785 [dir_watcher.py:finish():403] scan save: /home/yishu/FlowBotHD/logs/eval_history_trajectory_diffuser_hispndit/2024-11-02/23-15-40/wandb/run-20241102_231541-13l1ldyq/files/wandb-metadata.json wandb-metadata.json
+2024-11-02 23:15:49,947 INFO    SenderThread:455785 [dir_watcher.py:finish():403] scan save: /home/yishu/FlowBotHD/logs/eval_history_trajectory_diffuser_hispndit/2024-11-02/23-15-40/wandb/run-20241102_231541-13l1ldyq/files/config.yaml config.yaml
+2024-11-02 23:15:49,947 INFO    SenderThread:455785 [dir_watcher.py:finish():403] scan save: /home/yishu/FlowBotHD/logs/eval_history_trajectory_diffuser_hispndit/2024-11-02/23-15-40/wandb/run-20241102_231541-13l1ldyq/files/upstream_diff_62b7b3cb9d6dd530399313b04e5d9cf0a8a307fc.patch upstream_diff_62b7b3cb9d6dd530399313b04e5d9cf0a8a307fc.patch
+2024-11-02 23:15:49,947 INFO    SenderThread:455785 [dir_watcher.py:finish():403] scan save: /home/yishu/FlowBotHD/logs/eval_history_trajectory_diffuser_hispndit/2024-11-02/23-15-40/wandb/run-20241102_231541-13l1ldyq/files/conda-environment.yaml conda-environment.yaml
+2024-11-02 23:15:49,947 INFO    SenderThread:455785 [dir_watcher.py:finish():403] scan save: /home/yishu/FlowBotHD/logs/eval_history_trajectory_diffuser_hispndit/2024-11-02/23-15-40/wandb/run-20241102_231541-13l1ldyq/files/wandb-summary.json wandb-summary.json
+2024-11-02 23:15:49,954 INFO    SenderThread:455785 [dir_watcher.py:finish():403] scan save: /home/yishu/FlowBotHD/logs/eval_history_trajectory_diffuser_hispndit/2024-11-02/23-15-40/wandb/run-20241102_231541-13l1ldyq/files/code/scripts/eval_history_diffuser_wta.py code/scripts/eval_history_diffuser_wta.py
+2024-11-02 23:15:49,954 INFO    SenderThread:455785 [sender.py:transition_state():602] send defer: 10
+2024-11-02 23:15:49,954 DEBUG   SenderThread:455785 [sender.py:send_request():396] send_request: poll_exit
+2024-11-02 23:15:49,954 DEBUG   HandlerThread:455785 [handler.py:handle_request():144] handle_request: defer
+2024-11-02 23:15:49,954 INFO    HandlerThread:455785 [handler.py:handle_request_defer():170] handle defer: 10
+2024-11-02 23:15:49,955 DEBUG   SenderThread:455785 [sender.py:send_request():396] send_request: defer
+2024-11-02 23:15:49,955 INFO    SenderThread:455785 [sender.py:send_request_defer():598] handle sender defer: 10
+2024-11-02 23:15:49,955 INFO    SenderThread:455785 [file_pusher.py:finish():159] shutting down file pusher
+2024-11-02 23:15:50,189 INFO    wandb-upload_0:455785 [upload_job.py:push():133] Uploaded file /home/yishu/FlowBotHD/logs/eval_history_trajectory_diffuser_hispndit/2024-11-02/23-15-40/wandb/run-20241102_231541-13l1ldyq/files/output.log
+2024-11-02 23:15:50,203 INFO    wandb-upload_3:455785 [upload_job.py:push():133] Uploaded file /home/yishu/FlowBotHD/logs/eval_history_trajectory_diffuser_hispndit/2024-11-02/23-15-40/wandb/run-20241102_231541-13l1ldyq/files/requirements.txt
+2024-11-02 23:15:50,215 INFO    wandb-upload_2:455785 [upload_job.py:push():133] Uploaded file /home/yishu/FlowBotHD/logs/eval_history_trajectory_diffuser_hispndit/2024-11-02/23-15-40/wandb/run-20241102_231541-13l1ldyq/files/config.yaml
+2024-11-02 23:15:50,248 INFO    wandb-upload_4:455785 [upload_job.py:push():133] Uploaded file /home/yishu/FlowBotHD/logs/eval_history_trajectory_diffuser_hispndit/2024-11-02/23-15-40/wandb/run-20241102_231541-13l1ldyq/files/conda-environment.yaml
+2024-11-02 23:15:50,266 INFO    wandb-upload_1:455785 [upload_job.py:push():133] Uploaded file /home/yishu/FlowBotHD/logs/eval_history_trajectory_diffuser_hispndit/2024-11-02/23-15-40/wandb/run-20241102_231541-13l1ldyq/files/wandb-summary.json
+2024-11-02 23:15:50,466 INFO    Thread-11 :455785 [sender.py:transition_state():602] send defer: 11
+2024-11-02 23:15:50,466 DEBUG   HandlerThread:455785 [handler.py:handle_request():144] handle_request: defer
+2024-11-02 23:15:50,466 INFO    HandlerThread:455785 [handler.py:handle_request_defer():170] handle defer: 11
+2024-11-02 23:15:50,467 DEBUG   SenderThread:455785 [sender.py:send_request():396] send_request: defer
+2024-11-02 23:15:50,467 INFO    SenderThread:455785 [sender.py:send_request_defer():598] handle sender defer: 11
+2024-11-02 23:15:50,467 INFO    SenderThread:455785 [file_pusher.py:join():164] waiting for file pusher
+2024-11-02 23:15:50,467 INFO    SenderThread:455785 [sender.py:transition_state():602] send defer: 12
+2024-11-02 23:15:50,467 DEBUG   HandlerThread:455785 [handler.py:handle_request():144] handle_request: defer
+2024-11-02 23:15:50,467 INFO    HandlerThread:455785 [handler.py:handle_request_defer():170] handle defer: 12
+2024-11-02 23:15:50,467 DEBUG   SenderThread:455785 [sender.py:send_request():396] send_request: defer
+2024-11-02 23:15:50,467 INFO    SenderThread:455785 [sender.py:send_request_defer():598] handle sender defer: 12
+2024-11-02 23:15:50,537 INFO    SenderThread:455785 [sender.py:transition_state():602] send defer: 13
+2024-11-02 23:15:50,537 DEBUG   HandlerThread:455785 [handler.py:handle_request():144] handle_request: defer
+2024-11-02 23:15:50,537 INFO    HandlerThread:455785 [handler.py:handle_request_defer():170] handle defer: 13
+2024-11-02 23:15:50,537 DEBUG   SenderThread:455785 [sender.py:send_request():396] send_request: defer
+2024-11-02 23:15:50,537 INFO    SenderThread:455785 [sender.py:send_request_defer():598] handle sender defer: 13
+2024-11-02 23:15:50,537 INFO    SenderThread:455785 [sender.py:transition_state():602] send defer: 14
+2024-11-02 23:15:50,537 DEBUG   HandlerThread:455785 [handler.py:handle_request():144] handle_request: defer
+2024-11-02 23:15:50,537 INFO    HandlerThread:455785 [handler.py:handle_request_defer():170] handle defer: 14
+2024-11-02 23:15:50,538 DEBUG   SenderThread:455785 [sender.py:send():369] send: final
+2024-11-02 23:15:50,538 DEBUG   SenderThread:455785 [sender.py:send():369] send: footer
+2024-11-02 23:15:50,538 DEBUG   SenderThread:455785 [sender.py:send_request():396] send_request: defer
+2024-11-02 23:15:50,538 INFO    SenderThread:455785 [sender.py:send_request_defer():598] handle sender defer: 14
+2024-11-02 23:15:50,538 DEBUG   HandlerThread:455785 [handler.py:handle_request():144] handle_request: poll_exit
+2024-11-02 23:15:50,538 DEBUG   SenderThread:455785 [sender.py:send_request():396] send_request: poll_exit
+2024-11-02 23:15:50,539 DEBUG   HandlerThread:455785 [handler.py:handle_request():144] handle_request: server_info
+2024-11-02 23:15:50,539 DEBUG   SenderThread:455785 [sender.py:send_request():396] send_request: server_info
+2024-11-02 23:15:50,540 DEBUG   HandlerThread:455785 [handler.py:handle_request():144] handle_request: get_summary
+2024-11-02 23:15:50,540 DEBUG   HandlerThread:455785 [handler.py:handle_request():144] handle_request: sampled_history
+2024-11-02 23:15:50,597 INFO    MainThread:455785 [wandb_run.py:_footer_history_summary_info():3467] rendering history
+2024-11-02 23:15:50,597 INFO    MainThread:455785 [wandb_run.py:_footer_history_summary_info():3499] rendering summary
+2024-11-02 23:15:50,598 INFO    MainThread:455785 [wandb_run.py:_footer_sync_info():3426] logging synced files
+2024-11-02 23:15:50,598 DEBUG   HandlerThread:455785 [handler.py:handle_request():144] handle_request: shutdown
+2024-11-02 23:15:50,598 INFO    HandlerThread:455785 [handler.py:finish():854] shutting down handler
+2024-11-02 23:15:51,539 INFO    WriterThread:455785 [datastore.py:close():298] close: /home/yishu/FlowBotHD/logs/eval_history_trajectory_diffuser_hispndit/2024-11-02/23-15-40/wandb/run-20241102_231541-13l1ldyq/run-13l1ldyq.wandb
+2024-11-02 23:15:51,597 INFO    SenderThread:455785 [sender.py:finish():1526] shutting down sender
+2024-11-02 23:15:51,597 INFO    SenderThread:455785 [file_pusher.py:finish():159] shutting down file pusher
+2024-11-02 23:15:51,598 INFO    SenderThread:455785 [file_pusher.py:join():164] waiting for file pusher

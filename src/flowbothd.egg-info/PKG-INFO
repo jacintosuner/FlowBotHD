@@ -1,0 +1,167 @@
+Metadata-Version: 2.1
+Name: flowbothd
+Version: 0.1.0
+Summary: FlowBotHD: History-Aware Diffusion Handling Ambiguities in Articulated Objects Manipulation
+Author-email: Yishu Li <yishul@andrew.cmu.edu>
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+Requires-Dist: hydra-core==1.3.2
+Requires-Dist: lightning==2.0.3
+Requires-Dist: omegaconf==2.3.0
+Requires-Dist: pandas
+Provides-Extra: develop
+Requires-Dist: autoflake==2.1.1; extra == "develop"
+Requires-Dist: black==23.3.0; extra == "develop"
+Requires-Dist: isort==5.12.0; extra == "develop"
+Requires-Dist: mypy==1.3.0; extra == "develop"
+Requires-Dist: pandas-stubs==2.0.1.230501; extra == "develop"
+Requires-Dist: pylint==2.17.4; extra == "develop"
+Requires-Dist: pytest==7.3.2; extra == "develop"
+Requires-Dist: pre-commit==3.3.3; extra == "develop"
+Provides-Extra: notebooks
+Requires-Dist: jupyter; extra == "notebooks"
+Provides-Extra: build-docs
+Requires-Dist: mkdocs-material; extra == "build-docs"
+Requires-Dist: mkdocstrings[python]; extra == "build-docs"
+
+# FlowBotHD
+
+[FlowBotHD](https://flowbothd.github.io/) is a history-aware diffusion handling ambiguities (multi-modality and occlusion) in articulated objects.
+
+![Alt text](imgs/teaser.jpg)
+
+
+## Installation
+
+```{bash}
+conda create -n flowbothd python=3.9
+
+conda activate flowbothd
+
+pip install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 --index-url https://download.pytorch.org/whl/cu118
+
+pip install -r requirements.txt
+```
+
+> Note: Make sure you install pytorch with regard to your machine's CUDA version. If you want to change the cuda version, you also need to change the cuda version specified in requirements.txt
+
+
+Then we have to also install the flowbothd package itself. [Make sure you are directly under the flowbothd directory, where you can see pyproject.toml]
+
+```{bash}
+pip install .
+```
+
+## Run Full-set Experiments
+
+### Train
+
+STEP-1: Specify the Config files:
+1) configs/train.yaml: 
+
+    Choose dataset (single flow or trajectory) and model (original flowbot or diffuser)
+    - dataset: trajectory / flowbot
+    - model: artflownet / diffuser
+
+2) configs/training/{}_{}.yaml
+
+    Change the corresponding detailed configs for the training process: learning_rate, batch_size, warmup_steps, etc.
+
+3) configs/model/{}.yaml
+
+    Change the detailed configs for the model (Only needed for diffusion)
+
+    - num_train_timesteps: diffusion timestep
+
+STEP-2: Run training script
+```
+python scripts/train.py
+```
+
+### Eval
+
+Basically the same procedure with training, only the config files are eval.yaml (metric evaluation), eval_sim.yaml (simulation evaluation).
+
+Need to specify:
+checkpoint/run_id: the run_id in wandb
+wandb/group: the group name in wandb
+
+```
+python scripts/eval.py
+python scripts/eval_diffuser_wta.py
+python scripts/eval_diffuser.py
+python scripts/eval_sim.py  (Currently only for flowbot)
+```
+
+## Run Small Dataset Experiment
+
+(This needs some changes in the `r-pad/partnet_mobility_utils` repo that are currently kept local. Should ask Yishu about it)
+
+Need to change scripts/train.py for training and scripts/eval(_sim).py for evaluation:
+
+When creating dataset, specify the arguments `special_req` and `toy_dataset`.
+
+1) special_req: 
+
+- "half-half"(Half of data fully closed, half of data randomly opened )
+- "fully-closed"(All of data fully closed)
+
+2) toy_dataset: a dict to specify a small dataset
+- id: the name for the toy dataset
+- train-train: the ids for the training set
+- train-test: the ids for the validation set
+- test: the ids for the test set
+
+An Example:
+```
+# Create FlowBot dataset
+datamodule = data_module_class[cfg.dataset.name](
+    root=cfg.dataset.data_dir,
+    batch_size=cfg.training.batch_size,
+    num_workers=cfg.resources.num_workers,
+    n_proc=cfg.resources.n_proc_per_worker,
+    seed=cfg.seed,
+    trajectory_len=trajectory_len, 
+    special_req="half-half"
+    # only for toy training
+    toy_dataset = {
+        "id": "door-1",
+        "train-train": ["8994", "9035"],
+        "train-test": ["8994", "9035"],
+        "test": ["8867"],
+    }
+)
+```
+
+Then run train and eval exactly like before.
+
+## Run Diffusion
+
+Currently For diffusion, most experiments are run with scripts under `src/flowbothd/models/diffusion`. (Although the above set of pipeline is also complete, I suggest currently run diffusion under this directory and with following commands)
+
+Train: Under `src/flowbothd/models/diffusion/`
+```
+python diffuser.py
+```
+Eval: Under `src/flowbothd/models/diffusion/`
+```
+python eval.py
+```
+
+We can also use `inference.ipynb` to see the visualization results
+
+
+
+## Cite
+
+If you find this codebase useful in your research, please consider citing:
+
+```
+@inproceedings{liflowbothd,
+  title={FlowBotHD: History-Aware Diffuser Handling Ambiguities in Articulated Objects Manipulation},
+  author={Li, Yishu and Leng, Wen Hui and Fang, Yiming and Eisner, Ben and Held, David},
+  booktitle={8th Annual Conference on Robot Learning}
+}
+```
+
+

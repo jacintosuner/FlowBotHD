@@ -53,99 +53,68 @@ def main(cfg):
     # Should be the same one as in training, but we're gonna use val+test
     # dataloaders.
     ######################################################################
-    trajectory_len = (
-        1 if cfg.dataset.name == "flowbot" else cfg.inference.trajectory_len
-    )
-    toy_dataset = {
-        "id": "door-full-new",
-        "train-train": [
-            "8877",
-            "8893",
-            "8897",
-            "8903",
-            "8919",
-            "8930",
-            "8961",
-            "8997",
-            "9016",
-            "9032",
-            "9035",
-            "9041",
-            "9065",
-            "9070",
-            "9107",
-            "9117",
-            "9127",
-            "9128",
-            "9148",
-            "9164",
-            "9168",
-            "9277",
-            "9280",
-            "9281",
-            "9288",
-            "9386",
-            "9388",
-            "9410",
-        ],
-        "train-test": ["8867", "8983", "8994", "9003", "9263", "9393"],
-        "test": ["8867", "8983", "8994", "9003", "9263", "9393"],
-    }
-    # Create FlowBot dataset
-    # datamodule = data_module_class[cfg.dataset.name](
-    #     root=cfg.dataset.data_dir,
-    #     # batch_size=cfg.inference.batch_size,
-    #     batch_size=1,  # TODO: FOR DOOR dataset
-    #     num_workers=cfg.resources.num_workers,
-    #     n_proc=cfg.resources.n_proc_per_worker,
-    #     seed=cfg.seed,
-    #     # trajectory_len=trajectory_len,  # Only used when inference trajectory model
-    #     trajectory_len=trajectory_len,  # Only used when inference trajectory model
-    #     # trajectory_len=15,  # mpc
-    #     special_req="fully-closed",
-    #     # Door dataset # TODO: FOR DOOR dataset
-    #     toy_dataset=toy_dataset
-    # )
+    trajectory_len = 1
+    if cfg.dataset.dataset_type == "full-dataset":
+        # Full dataset
+        toy_dataset = None
+    else:
+        # Door dataset
+        toy_dataset = {
+            "id": "door-full-new-noslide",
+            "train-train": [
+                "8877",
+                "8893",
+                "8897",
+                "8903",
+                "8919",
+                "8930",
+                "8961",
+                "8997",
+                "9016",
+                # "9032",   # has slide
+                "9035",
+                "9041",
+                "9065",
+                "9070",
+                "9107",
+                "9117",
+                "9127",
+                "9128",
+                "9148",
+                "9164",
+                "9168",
+                "9277",
+                "9280",
+                "9281",
+                "9288",
+                "9386",
+                "9388",
+                "9410",
+            ],
+            "train-test": ["8867", "8983", "8994", "9003", "9263", "9393"],
+            "test": ["8867", "8983", "8994", "9003", "9263", "9393"],
+        }
+
     # Create FlowBot dataset
     fully_closed_datamodule = FlowTrajectoryDataModule(
-        root="/home/yishu/datasets/partnet-mobility",
+        root=cfg.dataset.data_dir,
         batch_size=1,
         num_workers=30,
         n_proc=2,
         seed=42,
         trajectory_len=1,  # Only used when training trajectory model
         special_req="fully-closed",
-        # toy_dataset = {
-        #     "id": "door-1",
-        #     "train-train": ["8994", "9035"],
-        #     "train-test": ["8994", "9035"],
-        #     "test": ["8867"],
-        #     # "train-train": ["8867"],
-        #     # "train-test": ["8867"],
-        #     # "test": ["8867"],
-        # }
-        # toy_dataset=toy_dataset,   # Door
-        toy_dataset=None,
+        toy_dataset=toy_dataset,
     )
     randomly_opened_datamodule = FlowTrajectoryDataModule(
-        root="/home/yishu/datasets/partnet-mobility",
+        root=cfg.dataset.data_dir,
         batch_size=1,
         num_workers=30,
         n_proc=2,
         seed=42,
         trajectory_len=1,  # Only used when training trajectory model
         special_req=None,
-        # toy_dataset = {
-        #     "id": "door-1",
-        #     "train-train": ["8994", "9035"],
-        #     "train-test": ["8994", "9035"],
-        #     "test": ["8867"],
-        #     # "train-train": ["8867"],
-        #     # "train-test": ["8867"],
-        #     # "test": ["8867"],
-        # }
-        # toy_dataset=toy_dataset,  # Door
-        toy_dataset=None,
+        toy_dataset=toy_dataset,
     )
 
     ######################################################################

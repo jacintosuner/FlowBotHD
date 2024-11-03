@@ -1,0 +1,126 @@
+wandb_version: 1
+
+dataset:
+  desc: null
+  value:
+    name: trajectory
+    data_dir: /home/yishu/datasets/partnet-mobility
+    dataset_type: doors-only
+    special_req: half-half-01
+    lr: 0.001
+    mask_input_channel: true
+    randomize_camera: true
+    randomize_size: false
+    augmentation: false
+    seed: 42
+    n_points: 1200
+model:
+  desc: null
+  value:
+    name: diffuser_hispndit
+    history_model: encoder
+    time_proj_dim: 64
+    time_embed_dim: 64
+    freq_shift: 0
+    flip_sin_to_cos: true
+    num_train_timesteps: 100
+    num_inference_timesteps: 100
+    history_len: 1
+    history_dim: 128
+    batch_norm: true
+inference:
+  desc: null
+  value:
+    name: trajectory_diffuser_hispndit
+    batch_size: 64
+    trajectory_len: 1
+log_dir:
+  desc: null
+  value: /home/yishu/FlowBotHD/logs
+output_dir:
+  desc: null
+  value: /home/yishu/FlowBotHD/logs/eval_history_trajectory_diffuser_hispndit/2024-11-02/23-14-56
+job_type:
+  desc: null
+  value: eval_history_trajectory_diffuser_hispndit
+lightning:
+  desc: null
+  value:
+    checkpoint_dir: /home/yishu/FlowBotHD/logs/eval_history_trajectory_diffuser_hispndit/2024-11-02/23-14-56/checkpoints
+wandb:
+  desc: null
+  value:
+    entity: leisure-thu-cv
+    project: flowbothd
+    group: flowbothd
+    save_dir: /home/yishu/FlowBotHD/logs/eval_history_trajectory_diffuser_hispndit/2024-11-02/23-14-56
+    artifact_dir: /home/yishu/FlowBotHD/wandb_artifacts
+mode:
+  desc: null
+  value: eval_history
+seed:
+  desc: null
+  value: 42
+checkpoint:
+  desc: null
+  value:
+    run_id: hn61knsq
+    reference: leisure-thu-cv/flowbothd/model-hn61knsq:best
+resources:
+  desc: null
+  value:
+    num_workers: 30
+    n_proc_per_worker: 2
+    gpus:
+    - 0
+metric_output_dir:
+  desc: null
+  value: ./logs
+_wandb:
+  desc: null
+  value:
+    code_path: code/scripts/eval_history_diffuser_wta.py
+    python_version: 3.9.20
+    cli_version: 0.15.4
+    framework: huggingface
+    huggingface_version: 4.31.0
+    is_jupyter_run: false
+    is_kaggle_kernel: false
+    start_time: 1730603696.821483
+    t:
+      1:
+      - 1
+      - 9
+      - 11
+      - 12
+      - 41
+      - 45
+      - 49
+      - 50
+      - 55
+      - 63
+      - 71
+      - 77
+      - 83
+      2:
+      - 1
+      - 9
+      - 11
+      - 12
+      - 41
+      - 45
+      - 49
+      - 50
+      - 55
+      - 63
+      - 71
+      - 77
+      - 83
+      3:
+      - 16
+      - 23
+      4: 3.9.20
+      5: 0.15.4
+      6: 4.31.0
+      8:
+      - 5

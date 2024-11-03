@@ -69,10 +69,10 @@ def trial_flow(
         )
         sim_trajectories.append(sim_trajectory)
         if result.assertion is False:
-            with open(
-                "/home/yishu/flowbothd/logs/assertion_failure.txt", "a"
-            ) as f:
-                f.write(f"Object: {obj_id}; Joint: {joint_name}\n")
+            # with open(
+            #     "/home/yishu/flowbothd/logs/assertion_failure.txt", "a"
+            # ) as f:
+            #     f.write(f"Object: {obj_id}; Joint: {joint_name}\n")
             continue
         if result.contact is False:
             continue
@@ -149,10 +149,10 @@ def trial_gt_trajectory(
         if result.success:
             movable_links.append(joint_name)
         if result.assertion is False:
-            with open(
-                "/home/yishu/flowbothd/logs/assertion_failure.txt", "a"
-            ) as f:
-                f.write(f"Object: {obj_id}; Joint: {joint_name}\n")
+            # with open(
+            #     "/home/yishu/flowbothd/logs/assertion_failure.txt", "a"
+            # ) as f:
+            #     f.write(f"Object: {obj_id}; Joint: {joint_name}\n")
             continue
         if result.contact is False:
             continue
@@ -260,10 +260,10 @@ def trial_with_prediction(
         )
         sim_trajectories.append(sim_trajectory)
         if result.assertion is False:
-            with open(
-                "/home/yishu/flowbothd/logs/assertion_failure.txt", "a"
-            ) as f:
-                f.write(f"Object: {obj_id}; Joint: {joint_name}\n")
+            # with open(
+            #     "/home/yishu/flowbothd/logs/assertion_failure.txt", "a"
+            # ) as f:
+            #     f.write(f"Object: {obj_id}; Joint: {joint_name}\n")
             continue
         if result.contact is False:
             continue
@@ -342,10 +342,10 @@ def trial_with_diffuser(
         )
         sim_trajectories.append(sim_trajectory)
         if result.assertion is False:
-            with open(
-                "/home/yishu/flowbothd/logs/assertion_failure.txt", "a"
-            ) as f:
-                f.write(f"Object: {obj_id}; Joint: {joint_name}\n")
+            # with open(
+            #     "/home/yishu/flowbothd/logs/assertion_failure.txt", "a"
+            # ) as f:
+            #     f.write(f"Object: {obj_id}; Joint: {joint_name}\n")
             continue
         if result.contact is False:
             continue
@@ -428,10 +428,10 @@ def trial_with_diffuser_history(  # Always use sgp.... (Have already proved it's
         )
         sim_trajectories.append(sim_trajectory)
         if result.assertion is False:
-            with open(
-                "/home/yishu/flowbothd/logs/assertion_failure.txt", "a"
-            ) as f:
-                f.write(f"Object: {obj_id}; Joint: {joint_name}\n")
+            # with open(
+            #     "/home/yishu/flowbothd/logs/assertion_failure.txt", "a"
+            # ) as f:
+            #     f.write(f"Object: {obj_id}; Joint: {joint_name}\n")
             continue
         if result.contact is False:
             continue
@@ -510,10 +510,10 @@ def trial_with_switch_models(
         )
         sim_trajectories.append(sim_trajectory)
         if result.assertion is False:
-            with open(
-                "/home/yishu/flowbothd/logs/assertion_failure.txt", "a"
-            ) as f:
-                f.write(f"Object: {obj_id}; Joint: {joint_name}\n")
+            # with open(
+            #     "/home/yishu/flowbothd/logs/assertion_failure.txt", "a"
+            # ) as f:
+            #     f.write(f"Object: {obj_id}; Joint: {joint_name}\n")
             continue
         if result.contact is False:
             continue
