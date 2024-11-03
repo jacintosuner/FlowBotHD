@@ -28,9 +28,7 @@ pip install .
 
 ## Demo
 
-In our `demo.ipynb`, we have prediction and simulation demo given a pretrained model.
-
-TODO
+For a quick start and overview, our `demo.ipynb` demonstrates the demo pipeline of generating prediction (given real-world point clouds) and simulation (given any partnet-mobility object) given a pretrained model.
 
 ## Dataset
 
