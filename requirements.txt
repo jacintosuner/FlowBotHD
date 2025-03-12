@@ -1,4 +1,4 @@
--f https://data.pyg.org/whl/torch-2.0.1+cu118.html
+# -f https://data.pyg.org/whl/torch-2.0.1+cu118.html
 
 torch-cluster==1.6.1+pt20cu118
 torch-geometric==2.2.0

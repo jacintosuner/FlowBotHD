@@ -55,6 +55,7 @@ from flowbothd.utils.script_utils import (
 data_module_class = {
     "flowbot": FlowBotDataModule,
     "trajectory": FlowTrajectoryDataModule,
+    # "policy_flowbot": PolicyFlowDataModule,
 }
 training_module_class = {
     "flowbot_pn++": FlowPredictorTrainingModule,

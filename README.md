@@ -11,6 +11,12 @@ Project Website: [https://flowbothd.github.io/](https://flowbothd.github.io/)
 
 ## Installation
 
+### UV Version (recommended)
+```{bash}
+uv sync
+```
+
+### Conda Version (not fully tested)
 ```{bash}
 conda create -n flowbothd python=3.9
 
@@ -20,6 +26,9 @@ pip install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 --index-url https
 
 pip install -r requirements.txt
 ```
+
+
+
 
 > Note: Make sure you install pytorch with regard to your machine's CUDA version. If you want to change the cuda version, you also need to change the cuda version specified in requirements.txt
 

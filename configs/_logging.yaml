@@ -20,7 +20,7 @@ lightning:
   checkpoint_dir: ${output_dir}/checkpoints
 
 wandb:
-  entity: leisure-thu-cv # ???  # The wandb entity
+  entity: r-pad # ???  # The wandb entity
   project: flowbothd # ???  # The wandb project name
 
   # Group is for grouping runs together (i.e. a train run and an eval run).
