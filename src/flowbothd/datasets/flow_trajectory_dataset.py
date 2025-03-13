@@ -11,8 +11,8 @@ from rpad.partnet_mobility_utils.data import PMObject
 class FlowTrajectoryData(TypedDict):
     id: str
     pos: npt.NDArray[np.float32]  # (N, 3): Point cloud observation.
-    delta: npt.NDArray[np.float32]  # (N, K, traj_len * 3): Ground-truth flow.
-    point: npt.NDArray[np.float32]  # (N, K, traj_len * 3): Ground-truth waypoints.
+    delta: npt.NDArray[np.float32]  # (N, K, 3): Ground-truth flow.
+    point: npt.NDArray[np.float32]  # (N, K, 3): Ground-truth waypoints.
     mask: npt.NDArray[np.bool_]  #  (N,): Mask the point of interest.
 
 

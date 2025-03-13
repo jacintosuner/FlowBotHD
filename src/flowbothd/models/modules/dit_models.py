@@ -421,7 +421,7 @@ class PN2DiT(nn.Module):
             torch.flatten(x, start_dim=2, end_dim=3).permute(0, 2, 1).reshape(-1, 3)
         )
         encoded_pcd = self.x_embedder(context.cuda())
-        x = encoded_pcd.reshape(x.shape[0], 1200, -1)
+        x = encoded_pcd.reshape(x.shape[0], self.n_points, -1)
 
         # # 2) Take DGCNN encoded point cloud
         # # print(torch.flatten(x, start_dim=2, end_dim=3).shape, pos.permute(0, 2, 1).shape)
@@ -614,7 +614,7 @@ class PN2HisDiT(nn.Module):  # With history latent everywhere version
             torch.flatten(x, start_dim=2, end_dim=3).permute(0, 2, 1).reshape(-1, 3)
         )
         encoded_pcd = self.x_embedder(context.cuda(), latents=context.history_embed)
-        x = encoded_pcd.reshape(x.shape[0], 1200, -1)
+        x = encoded_pcd.reshape(x.shape[0], self.n_points, -1)
 
         # # 2) Take DGCNN encoded point cloud
         # # print(torch.flatten(x, start_dim=2, end_dim=3).shape, pos.permute(0, 2, 1).shape)

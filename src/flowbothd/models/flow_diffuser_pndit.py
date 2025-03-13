@@ -38,7 +38,7 @@ class FlowTrajectoryDiffusionModule_PNDiT(L.LightningModule):
         self.lr_warmup_steps = training_cfg.lr_warmup_steps
 
         # Diffuser params
-        self.sample_size = 1200
+        self.sample_size = model_cfg.sample_size
         self.wta_trial_times = training_cfg.wta_trial_times
 
         self.backbone = network
@@ -57,7 +57,7 @@ class FlowTrajectoryDiffusionModule_PNDiT(L.LightningModule):
             .float()
             .cuda()
         )
-        pos = batch.pos.reshape(-1, self.sample_size, 3 * self.traj_len).float().cuda()
+        pos = batch.pos.reshape(-1, self.sample_size, 3).float().cuda()
 
         model_kwargs = dict(pos=pos, context=batch.cuda())
         loss_dict = self.diffusion.training_losses(
@@ -84,7 +84,7 @@ class FlowTrajectoryDiffusionModule_PNDiT(L.LightningModule):
         bs = batch.delta.shape[0] // self.sample_size
         z = torch.randn(bs, 3 * self.traj_len, 30, 40, device=self.device)  # .float()
 
-        pos = batch.pos.reshape(bs, self.sample_size, 3 * self.traj_len).float().cuda()
+        pos = batch.pos.reshape(bs, self.sample_size, 3).float().cuda()
         model_kwargs = dict(pos=pos, context=batch)
 
         samples, results = self.diffusion.p_sample_loop(
@@ -149,7 +149,7 @@ class FlowTrajectoryDiffusionModule_PNDiT(L.LightningModule):
 
         z = torch.randn(bs, 3 * self.traj_len, 30, 40, device=self.device)  # .float()
 
-        pos = batch.pos.reshape(bs, self.sample_size, 3 * self.traj_len).float().cuda()
+        pos = batch.pos.reshape(bs, self.sample_size, 3).float().cuda()
         model_kwargs = dict(pos=pos, context=batch)
 
         samples, results = self.diffusion.p_sample_loop(
@@ -377,7 +377,7 @@ class FlowTrajectoryDiffuserInferenceModule_PNDiT(L.LightningModule):
         self.traj_len = inference_cfg.trajectory_len
 
         # Diffuser params
-        self.sample_size = 1200
+        self.sample_size = model_cfg.sample_size  # Use sample_size from config instead of hardcoding
         self.backbone = network
         self.num_inference_timesteps = model_cfg.num_train_timesteps
         self.diffusion = create_diffusion(
@@ -416,7 +416,7 @@ class FlowTrajectoryDiffuserInferenceModule_PNDiT(L.LightningModule):
         bs = batch.pos.shape[0] // self.sample_size
         z = torch.randn(bs, 3 * self.traj_len, 30, 40, device=self.device)  # .float()
 
-        pos = batch.pos.reshape(bs, self.sample_size, 3 * self.traj_len).float().cuda()
+        pos = batch.pos.reshape(bs, self.sample_size, 3).float().cuda()
         model_kwargs = dict(pos=pos, context=batch.cuda())
 
         samples, results = self.diffusion.p_sample_loop(
@@ -464,7 +464,7 @@ class FlowTrajectoryDiffuserInferenceModule_PNDiT(L.LightningModule):
             )  # .float()
 
             pos = (
-                batch.pos.reshape(bs, self.sample_size, 3 * self.traj_len)
+                batch.pos.reshape(bs, self.sample_size, 3)
                 .float()
                 .to(self.device)
             )

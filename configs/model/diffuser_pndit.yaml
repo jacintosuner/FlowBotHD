@@ -6,3 +6,4 @@ freq_shift: 0
 flip_sin_to_cos: True
 num_train_timesteps: 100
 num_inference_timesteps: 100
+sample_size: ${dataset.n_points}  # Use the dataset's n_points configuration

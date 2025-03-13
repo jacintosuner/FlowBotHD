@@ -1,0 +1,17 @@
+# Dataset configuration for Flow3D
+name: flow3d
+data_dir: ${oc.env:HOME}/FlowBotHD/data/flow_3d_data/simple_tasks/lifting
+dataset_type: full-dataset
+
+# Data processing parameters
+n_points: 1200  # Number of points to sample
+trajectory_len: 1  # Length of trajectory sequences
+
+# Augmentation parameters
+randomize_size: true  # Whether to randomly scale point clouds
+augmentation: true  # Whether to apply random flips
+
+# These parameters are not used by Flow3D but needed for compatibility
+special_req: null
+toy_dataset: null
+history: false  # Whether to use history features

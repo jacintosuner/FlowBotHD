@@ -10,12 +10,11 @@ from flowbothd.datasets.flow_trajectory_dataset import (
 
 
 class FlowTrajectoryTGData(Protocol):
-    id: str  # Object ID.
-
-    pos: torch.Tensor  # Points in the point cloud.
-    delta: torch.Tensor  # instantaneous positive 3D flow trajectories.
-    point: torch.Tensor  # the trajectory waypoints
-    mask: torch.Tensor  # Mask of the part of interest.
+    id: str  # Object ID
+    pos: torch.Tensor  # (N, 3) Points in the point cloud
+    delta: torch.Tensor  # (N, K, 3) Flow trajectories
+    point: torch.Tensor  # (N, K, 3) Trajectory waypoints
+    mask: torch.Tensor  # (N,) Mask of points with motion
 
 
 class FlowTrajectoryPyGDataset(tgd.Dataset):

@@ -2,6 +2,7 @@ import torch
 
 
 def normalize_trajectory(pred):  # pred: bs * 1200, traj_len, 3
+    return pred
     pred = pred.reshape(-1, 1200, pred.shape[1], pred.shape[2])
     norm = pred.norm(p=2, dim=-1)
     norm = torch.max(norm, dim=1).values + 1e-6
@@ -13,18 +14,21 @@ def flow_metrics(
     pred_flow, gt_flow, reduce=True
 ):  # if reduce = True, return mean, else return everything
     with torch.no_grad():
-        # pred_flow = normalize_trajectory(pred_flow)
-
         # RMSE
         rmse = (pred_flow - gt_flow).norm(p=2, dim=-1)  # .mean()
 
         # Cosine similarity, normalized.
-        nonzero_gt_flowixs = torch.where(gt_flow.norm(dim=-1) != 0.0)
-        gt_flow_nz = gt_flow[nonzero_gt_flowixs]
-        pred_flow_nz = pred_flow[nonzero_gt_flowixs]
-
-        cos_dist = torch.cosine_similarity(pred_flow_nz, gt_flow_nz, dim=-1)  # .mean()
-        # print(pred_flow_nz, gt_flow_nz, cos_dist)
+        # Only compute cosine similarity where gt_flow is non-zero
+        gt_flow_norm = gt_flow.norm(dim=-1)
+        nonzero_mask = gt_flow_norm > 0
+        
+        if nonzero_mask.any():
+            gt_flow_nz = gt_flow[nonzero_mask]
+            pred_flow_nz = pred_flow[nonzero_mask]
+            cos_dist = torch.cosine_similarity(pred_flow_nz, gt_flow_nz, dim=-1)
+        else:
+            # If no non-zero ground truth flows, return 0 cosine similarity
+            cos_dist = torch.zeros_like(rmse)
 
         # Magnitude
         mag_error = (
@@ -32,7 +36,6 @@ def flow_metrics(
         ).abs()  # .mean()
 
     if reduce:
-        # print(rmse, cos_dist, mag_error)
         return rmse.mean(), cos_dist.mean(), mag_error.mean()
     else:
         return rmse, cos_dist, mag_error

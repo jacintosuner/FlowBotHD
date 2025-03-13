@@ -41,7 +41,7 @@ class FlowTrajectoryDiffusionModule_HisPNDiT(L.LightningModule):
         self.lr_warmup_steps = training_cfg.lr_warmup_steps
 
         # Diffuser params
-        self.sample_size = 1200
+        self.sample_size = model_cfg.sample_size
         self.wta_trial_times = training_cfg.wta_trial_times
 
         # self.history_encoder = HistoryEncoder(history_dim=model_cfg.history_embed_dim)
@@ -411,7 +411,7 @@ class FlowTrajectoryDiffuserInferenceModule_HisPNDiT(L.LightningModule):
         self.traj_len = inference_cfg.trajectory_len
 
         # Diffuser params
-        self.sample_size = 1200
+        self.sample_size = model_cfg.sample_size
 
         self.history_encoder = history_encoder
         self.history_len = self.history_encoder.history_len

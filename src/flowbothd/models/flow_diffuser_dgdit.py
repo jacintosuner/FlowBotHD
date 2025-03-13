@@ -38,7 +38,7 @@ class FlowTrajectoryDiffusionModule_DGDiT(L.LightningModule):
         self.lr_warmup_steps = training_cfg.lr_warmup_steps
 
         # Diffuser params
-        self.sample_size = 1200
+        self.sample_size = model_cfg.sample_size
         self.wta_trial_times = training_cfg.wta_trial_times
 
         self.backbone = network
@@ -377,7 +377,7 @@ class FlowTrajectoryDiffuserInferenceModule_DGDiT(L.LightningModule):
         self.traj_len = inference_cfg.trajectory_len
 
         # Diffuser params
-        self.sample_size = 1200
+        self.sample_size = model_cfg.sample_size  # Use sample_size from config instead of hardcoding
         self.backbone = network
         self.num_inference_timesteps = model_cfg.num_train_timesteps
         self.diffusion = create_diffusion(

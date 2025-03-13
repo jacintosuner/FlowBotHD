@@ -13,6 +13,7 @@ from lightning.pytorch.loggers import WandbLogger
 
 from flowbothd.datasets.flow_trajectory import FlowTrajectoryDataModule
 from flowbothd.datasets.flowbot import FlowBotDataModule
+from flowbothd.datasets.flow_3d import Flow3DDataModule
 from flowbothd.models.flow_diffuser_dgdit import (
     FlowTrajectoryDiffusionModule_DGDiT,
 )
@@ -55,7 +56,7 @@ from flowbothd.utils.script_utils import (
 data_module_class = {
     "flowbot": FlowBotDataModule,
     "trajectory": FlowTrajectoryDataModule,
-    # "policy_flowbot": PolicyFlowDataModule,
+    "flow3d": Flow3DDataModule,
 }
 training_module_class = {
     "flowbot_pn++": FlowPredictorTrainingModule,
@@ -166,6 +167,7 @@ def main(cfg):
         if special_req == "half-half-01"
         else (50 if special_req is None else 100),
         toy_dataset=toy_dataset,
+        n_points=cfg.dataset.n_points,
     )
     train_loader = datamodule.train_dataloader()
     if "diffuser" in cfg.model.name:
@@ -189,6 +191,7 @@ def main(cfg):
             trajectory_len=trajectory_len,  # Only used when training trajectory model
             special_req=None,  # special_req="fully-closed"
             toy_dataset=toy_dataset,
+            n_points=cfg.dataset.n_points,
         )
         fully_closed_datamodule = data_module_class[cfg.dataset.name](
             root=cfg.dataset.data_dir,
@@ -202,6 +205,7 @@ def main(cfg):
             trajectory_len=trajectory_len,  # Only used when training trajectory model
             special_req="fully-closed",  # special_req="fully-closed"
             toy_dataset=toy_dataset,
+            n_points=cfg.dataset.n_points,
         )
         val_loader = fully_closed_datamodule.val_dataloader(bsz=eval_sample_bsz)
         unseen_loader = randomly_opened_datamodule.unseen_dataloader(

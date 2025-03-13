@@ -188,3 +188,6 @@ wandb/
 # Hydra outputs
 .hydra/
 outputs/
+
+# data
+data/

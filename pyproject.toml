@@ -82,10 +82,6 @@ flowbot3d = { git = "https://github.com/r-pad/flowbot3d.git" }
 rpad-partnet-mobility-utils = { git = "https://github.com/r-pad/partnet_mobility_utils.git", branch = "diffusion" }
 
 
-
-
-
-
 # This is required to allow us to have notebooks/ at the top level.
 [tool.setuptools.packages.find]
 where = ["src"]

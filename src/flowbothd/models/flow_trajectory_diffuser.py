@@ -39,7 +39,7 @@ class FlowTrajectoryDiffusionModule_PN2(L.LightningModule):
         self.lr_warmup_steps = training_cfg.lr_warmup_steps
 
         # Diffuser params
-        self.sample_size = 1200
+        self.sample_size = model_cfg.sample_size
         self.time_embed_dim = model_cfg.time_embed_dim
         self.in_channels = 3 * self.traj_len + self.time_embed_dim
         assert (
@@ -428,7 +428,7 @@ class FlowTrajectoryDiffuserInferenceModule_PN2(L.LightningModule):
         self.traj_len = inference_cfg.trajectory_len
 
         # Diffuser params
-        self.sample_size = 1200
+        self.sample_size = model_cfg.sample_size
         self.time_embed_dim = model_cfg.time_embed_dim
         self.in_channels = 3 * self.traj_len + self.time_embed_dim
         assert (
